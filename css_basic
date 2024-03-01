@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<!-- 3.css를 외부문서로 정의하고 사용하는 방법 -->
+		<link rel="stylesheet" type="text/css" href="../common/css/mystyle.css">
+		<!-- 1.head태그에서 정의하고 사용하기 -->
+		<style type="text/css">
+			/* css에서 사용할 수 있는 주석문 */
+			p{
+				color: rgb(253,3,108) !important;
+				font-size: 12pt;
+				background-color: yellow;
+			}
+			h1{
+				color: lime;
+				font-size: 16pt
+			}
+			.test{
+				color:green;
+				font-size: 20pt;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- css사용방법 -->
+		<p>css연습중</p>
+		<h1>css연습중</h1>
+		<p>css연습중</p>
+		<h1>css연습중</h1>
+		<p>css연습중</p>
+		<h1>css연습중</h1>
+		<p>css연습중</p>
+		<h1>css연습중</h1>
+		<p>css연습중</p>
+		<h2>css연습중</h2>
+		<!-- 2.inline으로 태그해서 style속성으로 정의하고 사용 -->
+		<p style="color:blue; font-size:40pt;">
+			작업마무리
+		</p>
+		
+		<p class="test">css연습중</p>
+		<h1 class="test">css연습중</h1>
+	</body>
+</html>
