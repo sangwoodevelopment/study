@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Welcome to the Head First Lounge</h1>
+	<img src="/clientweb/images/drinks.gif"/>
+	<p>Join us any evening for refreshing elixirs, 
+	conversation and maybe a game or two of
+	<b><i>Dance Dance</i></b> Revolution.Wireless access is 
+	always provided: BYOWS(Bring Your Own Web Server.)</p>
+	<h2>Drections</h2>
+	<p>You'll find us right in the center of downtown Webville.
+	 Come join us!</p>
+
+</body>
+</html>
