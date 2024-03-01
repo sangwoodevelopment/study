@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>절대경로</h2>
+	<img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2F736x%2Fa4%2F64%2Fb1%2Fa464b13f170d20be20cdd78acb3da6ed.jpg&type=a340"/>
+	<img src="http://127.0.0.1:8088/clientweb/images/bts1.jfif"/>
+	<img src="/clientweb/images/bts1.jfif"/>
+	<img src="clientweb/images/bts2.jfif"/>
+	
+	<h2>상대경로</h2>
+	<img src="../images/bts2.jfif"/>
+	
+</body>
+</html>
