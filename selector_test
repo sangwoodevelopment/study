@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>test</title>
+		<style type="text/css">
+		*{
+			color:red;
+		}
+		li{
+			color:yellow;
+		}
+		h3,h4{
+			color:blue;
+			font-size:18pt;
+			border:solid 2px red;
+			font-weight:bold;
+			}
+			.myclass{
+				color:pink;
+			}
+		 	#myid{
+				color:olive;
+			}
+			p.myclass{
+				color:aqua;
+			}
+			 div > .myclass{
+				color:orange;
+				font-size:20pt;
+				font-weight:bold;
+			} */
+			div .myclass{
+				color:orange;
+				font-size:20pt;
+				font-weight:bold;
+			}
+			.css + li{
+				color:green;
+				font-size: 30pt
+			}
+			.css ~ li{
+				color:purple;
+				font-size: 50pt
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div>
+			<ul>
+				<li class="myclass">HTML</li>
+				<li class="css">CSS</li>
+				<li>javascript</li>
+				<li>spring</li>
+				<li id="myid">spring boot</li>
+				<li class="myclass">spring security</li>
+				<li>spring data</li>
+			</ul>
+			<div>servlet</div>
+			<p class="myclass">
+				jsp
+			</p>
+			<p>
+				php
+			</p>
+			<div >spring</div>
+		</div>
+		<h3>테스트1</h3>
+		<h4>테스트2</h4>
+		<h2 class="myclass">작업완료</h2>
+		<div class="myclass">
+			추가내용1
+			<h1>추가내용2</h1>
+			<div>추가내용3</div>
+		</div>
+	</body>
+</html>
