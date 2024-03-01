@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- html주석문(설명문 - 실행되지 않는 문장) 
+	클라이언트에 전송되는 주석문
+	head태그에는 브라우저가 해석되지않는 웹 페이지의 제목, 설명, 사용할 파일의 위치, 스타일정보, 스크립트위치 
+	정의하는 태그(보이지않는 정보를 해석)
+	-->
+<meta charset="UTF-8">
+<title>html기본</title>
+</head>
+<body>
+	<!-- viewport에 출력될 문서를 정의하는 곳 -->
+	지금은
+	html기본 수업중
+	html - 문서의 구성요소를 정의하는 기술
+	<!--제목을 위한 태그 -->
+	<h1>html연습</h1>
+	<h2>html연습</h2>
+	<h3>html연습</h3>
+	<h4>html연습</h4>
+	<h5>html연습</h5>
+	<h6>html연습</h6>
+	<h7>html연습</h7>
+	<!-- 글자를 정의하기 위해서 사용하는 태그이나 html5에서는 사용하지 말자 
+		 글꼴, 사이즈, 색상과 같은 속성은 모두 css에서 
+	-->
+	<br /><br /><br /><br />
+	<font size="1" face="궁서" color="blue">html연습</font><br />
+	<font size="2" face="굴림" color="#3DB7CC">html연습</font><br />
+	<font size="3" face="궁서" color="blue">html연습</font><br />
+	<font size="4" face="견고딕" color="#D1B2FF">html연습</font><br />
+	<font size="5" face="궁서" color="blue">html연습</font><br />
+	<font size="6" face="궁서" color="blue">html연습</font><br />
+	
+	<!-- 문단을 정의하기 위해 사용하는 태그 -->
+	<p>HTML 5는 별도 프로그램을 깔지 않아도 인터넷 브라우저상에서 화려한 그래픽 효과를 구현하며,
+	 음악ㆍ동영상을 자유롭게 감상할 수 있는 마크업 언어(markup language)이다.</p>
+	 <p>
+	2004년부터  HTML 5 표준화 그룹인 <b><i>WHATWG(Web Hypertext Application Technology Working Group)</i></b>는 
+	</p>
+	<p>HTML 5를 HTML의 차기 핵심 표준으로 만들기 위한 세부 작업을 시작하였고, 2014년 10월 웹표준화기구 월드와이드컨소시엄(W3C)은 HTML 5을 웹표준으로 선정했다. 이에 따라 애플ㆍ마이크로소프트(MS), 구글, 페이스북 등 글로벌 IT 기업들은 HTML 5 시대 주도권을 잡기 위해 치열한 경쟁에 돌입하기도 했다.</p>
+	<p></p>
+		<!-- 특수문자를 사용할 수 있다.
+			< : &lt;
+			> : &gt;
+			space : &nbsp;
+		 -->
+		 &lt;h1&gt;태그는 문서의 제목을 정의하기 위해서 사용하는 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;태그
+		 
+		 </p>
+		 <h1>H<sub>2</sub>0</h1>
+		 <h1>test<sup>2</sup></h1>
+		 
+	
+	
+</body>
+</html>
