@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_flex_test1</title>
+	<style type="text/css">
+		body{
+			margin: 0
+		}
+		#container{
+			width: 500px;
+			height: 500px;
+			background-color: aqua;
+			display: flex;
+			flex-wrap: wrap;
+			/* align-items: flex-strat; *//* 줄 단위로 관리 */
+			align-content: flex-start;
+			justify-content: center;
+		}	
+		#container .item{
+			width: 100px;
+			height: 100px;
+			border: solid 3px blue;
+			background-color: orange;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<!-- <div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div> -->
+	</div>
+
+</body>
+</html>
