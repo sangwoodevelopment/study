@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_boxsizing_test</title>
+	<style type="text/css">
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: orange;
+			border: solid 1px blue;
+		}
+		.box:first-child{
+			background-color: blue;
+			border-color: orange;
+			border-width: 5px;
+			padding: 30px;
+			/* box-sizing: content-box;  content-box의 widht는 컨텐츠를 위한 사이즈
+										border나 padding의 값이 변경되면 사이즈가 변경
+										사이즈가 가변 */
+			box-sizing: border-box; /* 컨텐츠, padding, border사이즈가 모두 고려된 사이즈로 적용 */
+			
+		}
+	</style>
+</head>
+<body>
+	<div class="box">box-sizing(border-box)</div>
+	<div class="box">box-sizing(content-box기본값)</div>
+
+</body>
+</html>
