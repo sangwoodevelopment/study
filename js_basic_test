@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<!-- 3. 외부문서로 정의하고 연결해서 사용하는 방법 -->
+		<script type="text/javascript" src="../common/js/test1.js"></script>
+		<!-- 2. body태그 내부에서 정의하고 사용하는 방법(MIME) -->
+		<script type="text/javascript">
+			console.log("head태그 내부");
+			function test() {
+				alert("안녕하세요");
+				console.log("함수실행중");
+				document.write("함수실행결과");
+			}
+
+		</script>
+	</head>
+	<body>
+	<!-- 1. body태그 내부에서 정의하고 사용하는 방법(MIME) -->
+		<script type="text/javascript">
+			document.write("<h1>브라우저에 html태그를 실행해서 출력 - 연습용</h1>");
+			console.log("디버깅용 - 자바의 System.out.println비슷한 역할")
+			test();//함수호출
+		</script>
+		<h1>안녕</h1>
+		<!-- inline으로 태그 내부에 자바스크립트 코드를 삽입(이벤트핸들러를 이용해서 연결) -->
+		<input type="button" value="자바스크립트 명령어 실행하기"  onclick="alert('자바스크립트 명령어 실행')"/>
+		<input type="button" value="자바스크립트 함수 호출하기"  onclick="test()"/>
+		<input type="button" value="자바스크립트 외부 문서에 정의된 함수 호출하기"  onclick="test2()"/>
+		<a href="javascript:test2()">자바스크립트 함수 호출</a>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
