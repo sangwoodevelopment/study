@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js_statement_exam1</title>
+</head>
+<body>
+	<script type="text/javascript">
+		let kor = 98;
+		let eng = 100;
+		let math = 97;
+		let total = kor + eng + math;
+		let avr = total/3;
+		
+		document.write("국어 : "+kor+"<br/>"+
+						"영어 : "+eng+"<br/>"+
+						"수학 : "+math+"<br/>"+
+						"총점 : "+total+"<br/>"+
+						"평균 : "+avr+"<br/>");
+		//+연산자는 연결연산자의 의미
+		//+연산자 앞에 문자열이 있으면 뒤에 있는 숫자는 문자열화시킨다.
+		document.write("총점 : "+(kor + eng + math)+"<br/>"
+		
+		//+, -, *, /
+		/* document.write(10/3+"<br/>")
+		document.write(10%3+"<br/>") */ //나머지를 구한다.
+	</script>
+
+</body>
+</html>
