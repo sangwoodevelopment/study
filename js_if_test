@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js_if_test2(중첩if)</title>
+</head>
+<body>
+	<script type="text/javascript">
+		let num = prompt("숫자를 입력하세요");
+		alert(num);
+		if (num == null) {
+			alert("취소 버튼을 누르면 작업할 수 없습니다")
+		} else {
+			if (num % 5 == 0) {
+				document.write("<h2>5의 배수</h2>");
+				document.write("<img src='../images/aa.jfif'>");
+			} else {
+				document.write("<h2>5의 배수가 아닙니다</h2>");
+				document.write("<img src='../images/garden01.jpg'>");
+			}
+		}
+	</script>
+
+</body>
+</html>
