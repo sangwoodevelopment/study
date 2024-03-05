@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js_if_test1(조건제어문-if문 기본)</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//1. 조건이 만족하는 경우에만 실행할 명령문이 있는 경우
+		//=> num1이 90이상이면 통과
+		let num1 = 88;
+		if(num1>=90){
+			//if블럭 - 조건이 만족하는 경우 실행할 문장
+			alert("통과 - 조건만족")
+		}
+		alert("종료");
+		
+		//2. 조건이 만족하는 경우와 조건이 만족하지 않는 경우 모두 실행할 문장이 있다
+		if(num1>=90){
+			//조건을 만족하는 경우 실행할 문장
+			document.write("<h2>")
+		}else{
+			//조건을 만족하지 않는 경우 실행할 문장
+			document.write("<h2>불합격</h2>");
+		}
+	</script>
+
+</body>
+</html>
