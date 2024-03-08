@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		let ssn = prompt("주민번호 7번째 값 입력");
+		//alert(typeof ssn);
+		switch (ssn) {
+		case "1":
+			alert("남자");
+			break;
+		case "2":
+			alert("여자");
+			break;
+		case "3":
+			alert("남자");
+			break;
+		case "4":
+			alert("여자");
+			break;
+		default:
+			alert("기타");
+		}
+
+		alert("코드변경");
+		switch (ssn) {
+		case "1":
+		case "3":
+			alert("남자");
+			break;
+		case "2":
+		case "4":
+			alert("여자");
+			break;
+		default:
+			alert("기타");
+		}
+		alert("코드변경2");
+		//문자열을 평가
+		switch (ssn) {
+		case "test1":
+			alert("문자열1");
+			break;
+		case "test2":
+			alert("문자열2");
+		}
+		alert(ssn/10);
+		//
+		switch (ssn/10) {
+		case "test1":
+			alert("문자열1");
+			break;
+		case "test2":
+			alert("문자열2");
+			break;
+		}
+		switch (ssn/10) {
+		case 9.9:
+			alert("문자열1");
+			break;
+		case 9.8:
+			alert("문자열2");
+			break;
+		}
+		//
+	</script>
+
+</body>
+</html>
