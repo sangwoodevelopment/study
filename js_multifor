@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		for (let row = 1; row <= 5; row++) {
+			for (let i = 1; i <= 5; i++) {
+				document.write("<img src='/clientweb/images/aa.jfif' width='70'>");
+			}
+			document.write("<br/>")
+		}
+	</script>
+
+</body>
+</html>
