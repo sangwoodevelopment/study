@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style type="text/css">
+		table{
+			margin : 10px;
+			border : solid 1px black;	
+			border-spacing : 0px;
+			width: 100px;
+			height: 400px;
+			display : inline-table;
+		}
+		td{
+			width: 100px;
+			height: 50px;
+			text-align : center;
+			border : solid 1px black;
+		}
+		th{
+			border : black;
+			background-color: gray;
+			padding: 10px;
+			margin : 3px;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		document.write("<h1>구구단</h1>")
+		document.write("<div id='ggd'>");
+			for(i = 1; i <= 9; i++){
+				document.write("<table>")
+				document.write("<tr><th>" + i + "단");
+				for (let j= 1; j<=9; j++){
+					document.write("<tr><td>" + i + "x" + j + "=" + i * j + "</td></tr>");
+					
+				}
+				document.write("</th></tr>");
+				document.write("</table>");
+			}
+			document.write("</div>")
+	</script>
+
+</body>
+</html>
