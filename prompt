@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	body {
+		text-align: center;
+	}
+
+	p {
+		color: red;
+	}
+</style>
+</head>
+<body>
+	<script type="text/javascript">
+		document.write("<h1>" + "3의 배수 찾기" + "</h1>")
+		let num = prompt("몇 가지 3의 배수를 찾을까요?");
+		let j = 0;
+		for (let i = 1; i <= num; i++) {
+			if (i % 3 == 0) {
+				document.write(i + ",");
+				j++;
+
+			}
+		}
+		document.write("<p>" + num + "까지 3의 배수의 갯수 : " + j + "</p>");
+	</script>
+
+</body>
+</html>
