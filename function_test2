@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		function printGugu(){
+			let dan = prompt("단을 입력하세요");
+			document.write("<table border='1'>");
+			for(i=1;i<=9;i++){
+				document.write("<tr>");
+				document.write("<td><h3>"+dan+"*"+i+"="+(dan*i)+"</h3></td>");
+				document.write("</tr>");
+			}	
+			document.write("</table>");
+		}
+		function getSum(num1,num2){
+			let sum = 0;
+			for (i = num1; i <= num2; i++){
+				sum = sum + i;
+			}
+			return sum;
+		}
+		function calc(num1,num2,cal){
+			let result=0;
+		if(opr==="+"){
+			result=num1+num2;
+		}else if(opr==="-"){
+			result=num1-num2;
+		}else if(opr==="*"){
+			result=num1*num2;
+		}else if(opr==="/"){
+			result=num1/num2;
+		}else{
+			result = "연산을 수행할 수 없습니다"
+		} 
+			
+			return result;
+			
+		}
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		let num1 = parseInt(prompt("숫자입력1"));
+		let num2 = parseInt(prompt("숫자입력1"));
+		let opr = prompt("숫자입력1");
+		
+		let calresult = calc(num1, num2, opr);
+		document.write("<h3>함수호출결과=>"+calresult+"</h3>");
+		
+		let result = getSum(1,100);
+		document.write("<h3>함수호출결과=>"+result+"</h3>");
+		
+		printGugu();
+	</script>
+
+</body>
+</html>
