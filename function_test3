@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>함수의 호이스팅</h1>
+	<script type="text/javascript">
+		var x=10;
+		function displayNumber(){
+			/* let y; */
+			console.log("x="+x);
+			console.log("y="+y);
+			let y = 20;
+		}
+		//함수를 정의하기 전에 호출
+		test(100);
+		console.log("=============");
+		function test(num){
+			if(num>=90){
+				console.log("통과");
+			}else{
+				console.log("다시작업");
+			}
+		}
+		
+		displayNumber();
+	</script>
+</body>
+</html>
