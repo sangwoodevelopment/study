@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		const myfunc = function(){
+			return "화살표함수연습(화살표함수전의 일반표현식)";
+		}
+		let result1 = myfunc();
+		console.log(result1);
+		//화살표함수이용 - function 키워드 생략
+		
+		const myfunc2 = ()=>{
+			return "화살표함수연습(화살표함수에서 function키워드없애기)";
+		}
+		let result2 = myfunc2();
+		console.log(result2);
+		//화살표함수이용 = 함수내부에서 실행할 명령어가 리턴 한 줄인 경우
+		
+		//function키워드 {},return키워드를 없앨 수 있다.
+		const myfunc3 = () => "화살표함수연습(화살표함수에서 {}과 return없애기)";
+		
+		//let result3 = myfunc3();
+		console.log(myfunc3());
+		//매개변수가 있는 화살표함수??? = 함수내부에서 실행할 명령어가 한 줄인 경우에만 {}을 생략할 수 있다.
+												//여러 줄이면 {}을 생략하면 안된다.
+		const myfunc4 = (name)=> "화살표함수연습(매개변수):"+name;
+		console.log(myfunc4("bts"));
+		
+		const myfunc5 = (name,age) => "화살표함수연습(매개변수2):"+name+","+age;
+		console.log(myfunc5("bts",30));
+		
+		const myfunc6 = (name,age)=>{
+			console.log("화살표함수연습(실행할 명령문이 여러줄):"+name+","+age);
+			return "종료";
+		}
+		console.log(myfunc6("bts",30));
+	</script>
+
+</body>
+</html>
