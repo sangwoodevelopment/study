@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js_function_test</title>
+		<script type="text/javascript">
+			function mytest (){
+				for(let i=1; i<=10; i++){
+					console.log("자바스크립트:"+i);	
+				}
+			console.log("================");
+			}
+			//함수를 정의
+			//1. 리턴값이 없고 매개변수가 없는 함수
+			// => 더하기 위한 숫자값들이 고정되어 있으므로 제한(사용자들의 요구사항을 반영할 수 없다)
+			function test1(){
+				let num1 = 100;
+				let num2 = 200;
+				document.write("<h1>test1함수:"+(num1+num2)+"</h1>");			
+			}
+			//2. 리턴값이 없고 매개변수가 있는 함수
+			function test2(num1,num2){
+				document.write("<h1>test1함수:"+(num1+num2)+"</h1>");	
+			}
+			
+			//3. 리턴값이 있고 매개변수가 있는 함수
+			// 	 리턴값 => 함수의 실행결과
+			//	 매개변수 => 함수를 실행하기 위해서 필요한 값
+			//							   --------
+			//							   외부에서 전달해야 하는 값
+			function test3(num1,num2){
+				let result = num1+num2;
+				return result;//함수의 마지막 명령문에서 return을 이용해서 함수의 결과를 호출한 곳으로 전달
+			}
+			//4. test3의 결과를 사용하는 함수
+			function checkdata(data){
+				if(myresult>=500){
+					alert("통과");
+				}else{
+					alert("다시작업");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//함수의 호출
+		//1. 매개변수가 없고 리턴값이 없는 함수의 호출
+		document.write("<h1>시작</h1>");
+		test1();
+			
+		//2. 리턴값이 없고 매개변수가 있는 함수의 호출
+		//=> 매개변수가 있다는 것은 함수를 사용할 수 있는 경우의 수가 더 많아졌다는 의미
+		//	 즉, 필요한 곳에서 값을 다양하게 전달하면 전달한 값이 뭐냐에 따라 처리가 달라짐
+		//   유연성이 높아짐
+		test2(100,200);
+		test2(500,600);
+		//prompt의 실행 결과를 매개변수로 전달 - 매개변수에 다른 함수의 호출결과를 전달할 수 있다
+		let num1 = parseInt(prompt("숫자를 입력하세요."));
+		test2(num1,1000);
+		test2(num1,parseInt(prompt("숫자를 입력하세요.")))
+		
+		//3. 리턴값이 있고 매개변수가 있는 함수의 호출
+		//		리턴값이 있는 경우 리턴값을 받아서 사용할 수 있도록 코드를 구현
+		//		1) 리턴값을 저장할 변수를 선언하고 받기
+		let myresult = test3(1000,2000);
+		document.write("<h3>test3의실행결과=>"+myresult+"</h3>");
+		console.log("결과=>"+myresult);
+		if(myresult>=500){
+			alert("통과");
+		}else{
+			alert("다시작업");
+		}
+		//2) 함수의 결과를 또 다른 함수의 매개변수로 전달할 수 있다.
+		alert(test3(10000,20000));
+		document.write("<hr/>");
+		checkdata(test3(10000,200));
+		
+		
+		//함수는 정의하고 호출하지 않으면 실행되지 않는다.
+			mytest(); //함수의 호출
+			console.log("다른작업1");
+			console.log("다른작업2");
+			mytest();
+			mytest();
+		</script>
+	</body>
+</html>
