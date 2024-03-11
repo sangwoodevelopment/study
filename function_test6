@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js_function_variable_scope_test</title>
+	<script type="text/javascript">
+		//자바스크립트에는 전역변수와 지역변수
+		//1.function밖(스크립트 위에서 변수를 선언:var키워드 없이)에서 변수를 선언하는 경우
+		num1 = 100;
+		//2.function밖(스크립트 위에서 변수를 선언:var,let,const키워드)에서 변수를 선언하는 경우
+		const num2 = 1000;
+		function test1(){
+			//3. 함수내부에서 변수를 선언하는 경우(선언 키워드 없이):전역변수
+			//   =>변수가 선언된 함수가 먼저 호출되어야 한다.
+			//	 =>함수에서 함수를 호출해서 사용하는 경우는 일반적 - 다른 함수의 실행결과를 사용하는 경우
+			num3 = 300;
+			//4. 선언키워드(var,let,const)를 이용해서 함수 내부에서 선언
+			//	 =>지역변수는 선언된 위치(블럭)에서만 사용할 수 있다.
+			//	 =>{}안에서 선언된 변수는 {}안에서만 사용가능
+			let num4 = 700;
+			if(num4>500){
+				//myval는 if블럭에서 선언됐으므로 if블럭에서만 사용할 수 있다.
+				let myval = 100000;
+				document.write("if블럭에서 myval을 사용=>"+myval+"<br/>");
+			}
+			document.write("test1에서 myval을 사용=>"+myval+"<br/>");
+			
+			document.write("test1에서 num1을 사용=>"+num1+"<br/>");
+			document.write("test1에서 num2을 사용=>"+num2+"<br/>");
+			document.write("test1에서 num3을 사용=>"+num3+"<br/>");
+			document.write("test1에서 num4을 사용=>"+num4+"<br/>");
+
+		}
+		function test2(){
+			document.write("test2에서 num1을 사용=>"+num1+"<br/>");
+			document.write("test2에서 num2을 사용=>"+num2+"<br/>");
+			document.write("test1에서 num3을 사용=>"+num3+"<br/>");
+			document.write("test1에서 num4을 사용=>"+num4+"<br/>");
+
+		}
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		//test2();
+		test1();
+		document.write("<hr/>");
+		test2();
+		document.write("<hr/>");
+		document.write("body에서 num1을 사용=>"+num1+"<hr/>");
+		document.write("body에서 num2을 사용=>"+num2+"<br/>");
+		document.write("body에서 num3을 사용=>"+num3+"<br/>");
+		document.write("body에서 num4을 사용=>"+num4+"<br/>");
+		
+	</script>
+
+</body>
+</html>
