@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//표현식을 이용해서 함수를 정의하면 호이스팅이 발생하지x
+	//myfunc(70);
+		myfunc(70);
+		var myfunc = function test(num){
+			if(num>=90){
+				console.log("통과");
+			}else{
+				console.log("다시작업");
+			}
+		}
+		var myfunc2 = function(num){
+			if(num>=90){
+				console.log("통과");
+			}else{
+				console.log("다시작업");			
+			}
+		}
+		//test(100);
+		myfunc(100);
+		myfunc2(70);
+		
+		//즉시실행함수
+		(function(){
+			alert("즉시실행함수 테스트");
+		}());
+		(function(num){
+			alert("즉시실행함수 테스트:"+num);
+		})(200);
+	</script>
+
+</body>
+</html>
