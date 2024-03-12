@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <script type="text/javascript">
+        function calc() {
+            var num1 = parseInt(document.getElementById("num1").value);
+            var resultdiv = document.getElementById("resultdiv");
+            var totalPrice = num1 * 12900 * 0.9;
+
+            resultdiv.innerHTML = "<p>" + totalPrice + "</p>";
+        }
+    </script>
+</head>
+<body>
+    <form>
+        수량 : <input type="text" id="num1" onkeyup="calc()"/>
+        <span id="resultdiv"></span>
+    </form>
+</body>
+</html>
