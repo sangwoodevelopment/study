@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<script type="text/javascript">
-		let setInterval;
+		let timeid;
 		function showTime(){
 			var today = new Date();
 			var timeVal = today.getHours()+"시";
