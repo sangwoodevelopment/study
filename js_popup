@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		function showData(zip,addr){
+			//js_popup을 오픈해준 창에 우편번호와 상세주소가 출력되도록 작업
+			window.alert(zip+":"+addr);
+			//매개변수로 전달된 값을 부모창(opener)에 전달하기
+			opener.document.myform.zipcode.value= zip;
+			opener.document.myform.address.value= addr;
+			window.close();
+		}
+		function getOpenerValue(){
+			//document.mypopup.id.value = opener.document.myform.id.value
+			document.mypopup.id.value = 
+				window.opener.document.getElementById("parentid").value
+		}
+	</script>
+</head>
+<body bgcolor="skyblue" onload="getOpenerValue()">
+	<form name="mypopup">
+		<input type="text" name="id"id ="id"> 
+		<input type="text" name="addr">
+		<input type="submit" value="검색">
+	</form>
+	<a href="javascript:showData('111-111','서울시구로동')">구로동</a><br />
+	<a href="javascript:showData('222-222','서울시서초동')">서초동</a><br />
+	<a href="javascript:showData('333-333','서울시방배동')">방배동</a><br />
+	<a href="javascript:showData('444-444','서울시신림동')">신림동</a><br />
+	<a href="javascript:showData('555-555','서울시상암동')">상암동</a><br />
+</body>
+</html>
