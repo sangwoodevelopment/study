@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		let subject = ["servlet","javascript","jQuery","spring","html","jsp","java","thymeleaf","mybatis","jpa","websocket","MQTT"];
+		for(let i=0; i<subject.length; i++){
+			document.write("<h3>배열의 요소:"+subject[i]+"</h3>");
+		}
+		document.write("<hr/>")
+	</script>
+
+</body>
+	<script type="text/javascript">
+		
+		//1.forEach - 배열의 모든 item을 출력
+		//배열에서 item 즉 요소를 하니씩 꺼내서 forEach안의 매개변수로 전달된 함수를 호출해서 실행한다.
+		//배열의 한 요소에 대해서 함수를 각각 실행
+		subject.forEach(showmyArr);
+		document.write("<hr/>");
+		
+		//2. forEach내부에 익명함수를 정의하고 사용
+		subject.forEach(function(item){
+			document.write("<h3>배열의 요소 (익명함수로 처리):"+item+"</h3>");
+		});
+		
+		//3. forEach내부에 화살표함수를 정의
+		subject.forEach(function(item){
+			document.write("<h3>배열의 요소 (익명함수로 처리):"+item+"</h3>");
+		});
+		document.write("<hr/>");
+		
+		//4. map
+		// => 배열의 각 요소를 이용해서 새로운 배열을 만들어서 리턴
+		let data1 = subject.map((item)=> item + "-web");
+		document.write(data1);
+		document.write("<hr/>");
+		
+		//5. map - 외부에서 함수를 정의해서 활용
+		let myfunc = function(item){
+			return item.length>=5;
+		}
+		
+		let data2 = subject.map(myfunc);
+		
+		document.write(data2);
+		document.write("<hr/>");
+		
+		//6. filter - 특정 조건을 만족하는 요소들만 추출해서 리턴
+		// => 화살표함수를 이용
+		let data3 = subject.filter(item => item.length>=5);
+		document.write(data3);
+		document.write("<hr/>");
+
+		let data4 = subject.filter(myfunc);
+		document.write(data4);
+		document.write("<hr/>");
+		
+		
+	</script>
+</html>
