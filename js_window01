@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Insert title here</title>
+	<script type="text/javascript">
+		function searchAddress(){
+			let mypopup = window.open("/clientweb/js_bom/js_popup.html","mywin",
+						"width=500,height=300,left=300,top=200");
+		}
+		function idcheck(){
+			let idpopup = window.open("/clientweb/js_bom/js_popup.html","mywin2",
+						"width=500,height=300,left=300,top=200");
+		}
+		function test_number(){
+			let numval1 = document.getElementById("num1").value;
+			let numval2 = document.getElementById("num2").value;
+			let result = document.getElementById("result").value;
+			alert("isNaN의 결과=>"+isNaN(numval1));
+			alert("eval의 결과=>"+eval(numval2));
+			alert("문자열의 길이=>"+result.length);
+			alert("문자열의 길이=>"+result.trim().length);
+		}
+	</script>
+</head>
+<body>
+	<button onClick="window.alert('경고창')">경고창</button>
+	<button onClick="testConfirm()">확인창</button>
+	<button onClick="test_number()">숫자처리메서드</button>
+	<button onClick="window.close()">닫기</button>
+	
+	<form action="" name="myform">
+		아이디 : <input type="text" name="parentid"	>
+		<input type="button" value="아이디중복체크" onClick="idcheck()">
+		<br>
+	
+	
+		우편번호 : <input type="text" name="zipcode"	>
+		<input type="button" value="SEARCH ADDRESS" onClick="searchAddress()">
+		<br>
+		
+		상세주소 : <input type="text" name="address"><br>
+		숫자1 : <input type="text" name="num1"><br>
+		숫자2 : <input type="text" name="num2"><br>
+		결과 : <input type="text" name="result"><br>
+		<input type="submit" value="SEND">
+		
+	</form>
+</body>
+</html>
