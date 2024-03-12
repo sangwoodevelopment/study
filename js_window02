@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		let setInterval;
+		function showTime(){
+			var today = new Date();
+			var timeVal = today.getHours()+"시";
+			timeVal = timeVal + today.getMinutes()+"분";
+			timeVal = timeVal + today.getSeconds()+"초";
+			
+			document.getElementById("time").value = timeVal;
+		} 
+		function setTimeoutTest(){
+			//setTimeout("실행할명령문",시간)
+			//=> 시간이 경과되면 자동으로 정의한 명령문이 실행(한 번만 실행)
+			//location.href='https://www.naver.com'
+			window.setTimeout("location.href='https://www.naver.com'",2000);
+		}
+		function setIntervalTest() {
+			//특정 시간 간격으로 showTime이 호출되도록 작업
+			//setInterval("실행할명령문",시간)
+			//			  ----------
+			//			     함수(콜백함수-콜백함수를 정의하는 경우 함수명만 쓴다)
+			timeid = window.setInterval(showTime,1000);//1초에 한 번씩 함수를 호출
+		}
+		function stop() {
+			//setInterval로 반복해서 실행하는 흐름을 제거 - 반복작업을 해제
+			window.clearInterval(timeid)//(interval되어실행되는흐름의id)
+		}
+	</script>
+</head>
+<body onload="showTime()">
+	<form>
+		<input type="text" id="time"/>
+		<input type="button" value="setTimeout테스트" onclick="setTimeoutTest()"/>
+		<input type="button" value="시작" onclick="setIntervalTest()"/>
+		<input type="button" value="중지" onclick="stop()"/>
+	</form>
+
+</body>
+</html>
