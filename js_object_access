@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style type="text/css">
+		p{
+			background-color : yellow;
+		}
+	
+	</style>
+	<script type="text/javascript">
+		function test1(){
+			//BOM접근방법
+			//let mytext = window.document.myform.id.value;
+			let mytext = myform.id.value;
+			alert(mytext);
+		}
+		function test2(){
+			//DOM객체 방식으로 접근 - id를 이용해서 접근
+			//mydiv라는 id속성이 정의된 객체를 가져와서 배경색을 yellow로 변경
+			//getElementById("mydiv") => id속성명으로 객체를 찾아오기
+			let mydiv = document.getElementById("mydiv");
+			mydiv.setAttribute("style","background-color: yellow")
+		}
+		function test3(){
+			//DOM객체 방식으로 접근 - 실행하기3번을 누르면 mydiv객체의 스타일이 변경되도록 color속성
+			//querySelector("#mydiv"); => css의 selector를 정의하는 방식으로 객체를 찾아오기
+			let myobj = document.querySelector("#mydiv");
+			myobj.style.color = "red";
+		}
+	</script>
+</head>
+<body>
+	<h1 id="myh1">BOM</h1>
+	<div id="mydiv">BOM은 브라우저 객체 모델</div>
+	<form name="my form">
+		<input type="text" name ="id">
+		<input type="button" value="실행하기1" onclick="test1()"/>
+		<input type="button" value="실행하기2" onclick="test2()"/>
+		<input type="button" value="실행하기3" onclick="test3()"/>
+	</form>
+</body>
+</html>
