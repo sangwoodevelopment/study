@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		function print(item){
+			document.write(item);
+		}
+		let myarr = [5,7,9,10,5];
+		let data1 = myarr.map(item=>item * 5)	
+		
+		document.write(data1);
+		document.write("<hr/>");
+		
+		let data2 = myarr.map(item=>item %2 ==0)	
+		
+		document.write(data2);
+		document.write("<hr/>");
+		
+		data2.forEach(print);
+		document.write("<hr/>");
+	</script>
+
+</body>
+</html>
