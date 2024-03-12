@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+	function calc(){
+		let mytext1 = document.getElementById("num1");
+		let mytext2 = document.getElementById("num2");
+		
+		//result라는 id명으로 정의된 div객체
+		let resultdiv = document.getElementById("result");
+		console.log(resultdiv);
+		console.log(mytext1.value);
+		mytext2.value = mytext1.value
+		resultdiv.innerHTML = "결과:"+(parseInt(mytext1.value )+ 2000);
+	}
+	function changecolor(mytext){
+		console.log(mytext);
+		mytext.setAttribute("style","background-color: yellow");
+	}
+	function display(){
+		document.getElementById("result").innerHTML="<h1>텍스트</h1>";
+	}
+	function calc2(){
+		let myval = document.getElementById("num2").value;
+		document.getElementById("result").innerHTML="<h1>값:"+myval*12+1000+"</h1>";
+		
+	}
+	</script>
+</head>
+<body onload = "alert('환영합니다.')">
+	<div id="result" style="color: red; font-weight: bold;"></div>
+	<form>
+		<input type="text" id="num1" onkeyup="calc()" onclick="changecolor(this)">
+		<input type="text" id="num2" onclick="changecolor(this)" onchange="calc2()">
+		<input type="text" id="num3" onclick="changecolor(this)">
+		<input type="text" id="num4" onclick="changecolor(this)" onfocus="display()">
+		<input type="button" value="자바스크립트전송">
+	</form>
+	<!-- 마우스관련 -->
+	<img src="/clientweb/images/aa.jfif" width="300" name="myimg"
+		onmouseover="myimg.src='../images/bb.jfif'"
+		onmouseout="myimg.src='/clientweb/images/aa.jfif'"
+	/>
+</body>
+</html>
