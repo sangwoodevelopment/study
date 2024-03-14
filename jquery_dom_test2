@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	
+</head>
+<body>
+	<div id="main">
+		<div class = "test1">jquery~</div>
+		<div class = "test2">jquery~</div>
+		<div id = "test3">jquery~</div>
+		<div id = "test4">jquery~</div>
+		<div id = "test5">jquery~</div>
+	</div>
+	<p id="test">테스트</p>
+	<form>
+		<input type = "button" id="nodetest" value = "노드엑세스">
+	</form>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#nodetest").on("click",function(){
+				//노드엑세스연습
+				//특정노드의 하위 노드를 모두 가져오기
+				let childlist = $("#main").children();
+				console.log(childlist.length);//하위노드의 갯수
+				//메소드 체이닝이 가능 => 메소드 실행결과로 다시 메소드를 호출할 수 있다.(메소드를 체인처럼 연결해서 사용)
+				
+				//jQuery에서 css속성 정의할때 사용
+				$("#main").children().css("color","orange");
+				
+				//last()는 lastChild
+				$("#main").children().last().css("color","blue");
+				
+				//first()는 firstChild
+				$("#main").children().first().css("color","red");
+				
+				//attr() - setAttribute와 동일
+				$("test").attr("style","background-color:green; color : yellow; font-weight: bold; font-size: 20pt");
+			});
+		});
+	</script>
+</body>
+</html>
