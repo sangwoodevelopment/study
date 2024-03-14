@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$("insertP").on("click",function(){
+				let newP = $("<p>newP</p>");
+				newP.attr("style","background-color:yellow")
+				$("#root").append(newP);
+			});
+			$("deleteP").on("click",function(){
+				$("#root").children().last().remove();
+			});	
+			$("#deleteDivAndP").on("click",function(){
+				$("#root").empty();
+			});	
+			$("#filterdel").on("click",function(){
+				$("#root p:last").remove();
+			});	
+		});
+	</script>
+</head>
+<body>
+<div id="layer"></div>
+ 	<div id="root">
+		<p style="background: gray;">line01</p>
+		<p style="background: skyblue">line02</p>
+		<p style="background: green;">line03</p>
+		<p style="background: red;">line04</p>
+ 	</div>
+ 	<hr>
+ 		<button id="insertP">P태그추가하기</button>
+		<button id="deleteP">P태그삭제하기</button>
+		<button id="deleteDivAndP">div안의 모든 p태그 삭제하기</button>
+		<button id="filterdel">선택자 적용하기</button>
+
+	
+</body>
+</html>
