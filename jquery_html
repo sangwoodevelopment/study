@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#htmlbtn").on("click",function(){
+					$("#result").html("<h1>추가되는 문자열</h1>");
+				});
+				$("#attrbtn").on("click",function(){
+					$("#result").text("<h1>추가되는 문자열</h1>"); //객체내부에 문자열을 추가 -html태그가 실행되지 않는다 : innerText
+					$("#attrtest1").attr("href","https://www.naver.com"); // attr에서 속성명과 값을 주면 : setAttribute와 동일
+					alert($("#result").attr("class")); //attr매소드에 속성명만 정의하면 : getAttribute
+					$("#attrtest2").attr({ //json포멧으로 정의
+						"href" : "https://www.daum.net",
+						"target" : "_blank"
+					})	
+				});
+			});
+		</script>
+</head>
+<body>
+	<div id="main">
+		<div class="test1">jQuery~~~~</div>
+		<div class="test2">jQuery~~~~</div>
+		<div id="test3">jQuery~~~~</div>
+		<div id="test4">jQuery~~~~</div>
+		<div id="test5">jQuery~~~~</div>
+	</div>
+	<p >jquery 연습중</p>
+	<a id="attrtest1">하이퍼링크</a>
+	<a id="attrtest2">하이퍼링크</a>
+	<div id="result" style="color: blue;" class="mycalss"></div>
+	<form>
+		<input type="button" id="htmlbtn" value="html태그 추가하기">
+		<input type="button" id="attrbtn" value="속성추가하기">
+	</form>
+</body>
+</html>
