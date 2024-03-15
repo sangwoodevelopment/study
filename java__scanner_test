@@ -1,0 +1,25 @@
+package basic;
+
+import java.util.Scanner;
+
+//Scanner클래스에 대한 내용
+//APT활용
+//Scanner는 사용자가 입력하는 값을 읽어서 처리하기 위한 기능을 제공
+//System.out => 표준출력
+public class ScannerTest2 {
+	public static void main(String[] args) {
+		Scanner key = new Scanner(System.in);
+		System.out.println("단어입력");
+		String val = key.next();
+		System.out.println("읽은값:"+val);
+		
+		System.out.println("실수입력:");
+		double doubleVal = key.nextDouble();
+		System.out.println("읽은값:"+doubleVal);
+		
+		System.out.println("정수입력:");
+		double intVal = key.nextDouble();
+		System.out.println("읽은값:"+intVal);
+		
+	}
+}
