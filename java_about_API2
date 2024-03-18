@@ -1,0 +1,37 @@
+package basic;
+//ctrl+shift+o 자동 임폴트
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class APITest2 {
+	public static void main(String[] args) {
+		int i = 10;
+		System.out.println("기본형변수=>"+i);
+		
+		Random rand = new Random();
+		Random rand2 = new Random();
+		ArrayList list = new ArrayList();
+		InputStream in;
+		System.out.println("참조형변수=>"+rand);
+		System.out.println("참조형변수=>"+rand2);
+		
+		/*
+		 * String클래스에 정의되어 있는 charAt이라는 메소드를 이용
+		 * 1. String클래스의 기능을 사용하기 위해서 String클래스를 메로리에 올리기
+		 * 2. 메모리에 할당된 String클래스를 사용하기 위해서 동일한 타입의 변수를 선언에서 할당된 객체의 주소를 저장
+		 * 3. .연산자를 이용해서 heap에 할당된 String객체를 찾아가서 필요한 기능을 참조해서 사용
+		 * 	  ------------------
+		 * 		 메소드의 호출
+		 * 4. 메소드의 실행결과(리턴값)가 있으면 결과의 타입(리턴타입)과 동일한 타입의 변수를 선언해서 메소드의
+		 * 	  실행결과를 저장해서 활용
+		 * 5. 매개변수를 확인하고 알맞은 값을 넣어서 호출한다.
+		 * 6. 결과를 활용
+		 * 
+		*/
+		String str = new String("javaprograming");
+		char c = str.charAt(0);
+		System.out.println("charAt의 호출결과=>"+c);
+	}
+
+}
