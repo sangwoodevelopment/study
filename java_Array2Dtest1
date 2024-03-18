@@ -1,0 +1,23 @@
+package array;
+
+public class Array2DTest1 {
+	public static void main(String[] args) {
+		int[][]myarr = new int[3][2];
+		
+		myarr[0][0] = 100;
+		myarr[1][0] = 100;
+		myarr[2][0] = 100;
+		
+		System.out.println("myarr의 0번 요소가 참조한느 배열의 값:"+myarr[0][1]);
+		System.out.println(myarr.length);
+		System.out.println(myarr[0].length);
+		System.out.println(myarr[1].length);
+		System.out.println(myarr[2].length);
+		
+		for(int row=0;row<myarr.length;row++) {
+			for(int i=0;i<myarr[row].length;i++) {
+				System.out.println(myarr[row][i]+"\t");
+			}
+		}
+	}
+}
