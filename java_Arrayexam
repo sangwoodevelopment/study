@@ -1,0 +1,23 @@
+package array;
+
+import java.util.Random;
+
+public class ArrayExam2 {
+	public static void main(String[] args) {
+		int[] num = new int[5];
+		
+		Random rand = new Random();
+		for(int i=0; i<num.length; i++) {
+			num[i] = rand.nextInt(100)+1;
+		}
+		System.out.println("=======");
+		for(int i=0; i<num.length; i++) {
+			System.out.println(i+"번 요소=>"+num[i]);
+			if(num[i]%2==0) {
+				System.out.println("짝수");
+			}else {
+				System.out.println("홀수");
+			}
+		}
+	}
+}
