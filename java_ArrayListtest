@@ -1,0 +1,14 @@
+package array;
+
+import java.util.ArrayList;
+
+public class ArrayListTest {
+	public static void main(String[] args) {
+		ArrayList<String> list = new ArrayList<String>();
+		for(int i=0;i<100;i++) {
+			list.add(""+i);
+			System.out.println(list.get(i));
+		}
+		System.out.println("요소의갯수=>"+list.size());
+	}
+}
