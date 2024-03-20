@@ -1,0 +1,24 @@
+package oop.basic.constructor;
+
+import java.io.FileInputStream;
+
+public class APIconstructor {
+	public static void main(String[] args) throws Exception{
+		byte[] data1 = {97,98,99,100};
+		char[] data2 = {'0','1','0','-'};
+		String str1 = new String(data1);
+		System.out.println(str1);
+		
+		String str2 = new String(data1,2,2);
+		System.out.println(str2);
+		
+		String str3 = new String(data2);
+		System.out.println(str3);
+		
+		String str4 = new String(data2,0,3);
+		System.out.println(str4);
+		
+		FileInputStream fis = new FileInputStream("test.txt");
+		System.out.println((char)fis.read());
+	}
+}
