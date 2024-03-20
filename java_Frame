@@ -1,0 +1,11 @@
+package oop.basic;
+
+import javax.swing.JFrame;
+
+public class MyFreame{
+	public static void main(String[] args) {
+		JFrame f = new JFrame("도서관리프로그램");
+		f.setSize(300, 300);
+		f.setVisible(true);
+	}
+}
