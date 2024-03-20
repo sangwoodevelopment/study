@@ -1,0 +1,40 @@
+package oop.basic;
+
+
+import java.util.Iterator;
+
+public class MyMethodTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyMethod obj = new MyMethod();
+		System.out.println("프로그램시작");
+		System.out.println("step1");
+		obj.display();
+		obj.display();
+		System.out.println("step2");
+		System.out.println("step3");
+		obj.display("@@");
+		obj.display("$$");
+		
+		obj.display("^", 5);
+		obj.display("^", 20);
+		
+		int returndata = obj.add(100, 200);
+		System.out.println("계산결과=>"+returndata);
+		if(returndata>300) {
+			System.out.println("통과");
+			
+		}else {
+			System.out.println("다시작업");
+		}
+	
+	System.out.println("계산결과=>"+obj.add(1000, 2000));
+	if(obj.add(200, 3000)>500) {
+		System.out.println("통과");
+		
+	}else {
+		System.out.println("다시작업");
+		}
+	}
+}
