@@ -1,0 +1,12 @@
+package oop.basic;
+
+public class MethodTest3 {
+	public static void main(String[] args) {
+		MyMethod3 obj = new MyMethod3();
+		int[] data = {88,79,66,100};
+		int[] nData = obj.changeArr(data);
+		for(int i=0; i<data.length; i++) {
+			System.out.println(data[i]);
+		}
+	}
+}
