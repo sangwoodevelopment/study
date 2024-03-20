@@ -1,0 +1,35 @@
+package oop.basic;
+//매소드의 매개변수나 리턴타입으로 참조형타입을 사용하는 것은 주소가 복사되기 때문에 객체(배열)를 공유
+//기본형은 값이 복사되고 참조형은 주소가 복사되므로 차이점을 이해해야한다.
+class Point{
+	int x = 10;
+	int y = 20;
+}
+
+public class CallByValueRefTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int i = 10;
+		int[] arr = {10,20,30,40};
+		Point obj = new Point();
+		System.out.println("**********전***********");
+		display(i, arr, obj);
+		change(i, arr, obj);
+		
+		System.out.println("*********후*********");
+		
+	}
+	public static void display(int i,int[] arr,Point obj) {
+		System.out.println("기본형변수i="+i);
+		System.out.println("배열의 0번요소="+arr[0]);
+		System.out.println("Point객체의 x="+obj.x+",y="+obj.y);
+}
+	public static void change(int i,int[] arr,Point obj) {
+		i = 2000;
+		arr[0] = 1000;
+		int temp = obj.x;
+		obj.x = obj.y;
+		obj.y = temp;
+	}
+}
