@@ -1,0 +1,19 @@
+package oop.inheritance;
+
+class Super{
+	private int num = 10;
+}
+class Sub extends Super{
+	int num = 100;
+	public void display() {
+		System.out.println("num=>"+num);
+		System.out.println("부모의 num=>"+super.num);
+	}
+}
+public class InheritanceTest1 {
+	public static void main(String[] args) {
+		Sub obj = new sub();
+		obj.display();
+		System.out.println(obj.num);
+	}
+}
