@@ -1,0 +1,87 @@
+package polymorphism;
+
+
+public class CoffeShop {
+	public static void main(String[] args) {
+		System.out.println("****java nara CoffeeShop영업개시****");
+		Beverage[] beverage = new Beverage[5];
+		beverage[0] = new Coffee("Cappuccino");
+		beverage[1] = new Coffee("CafeLatte");
+		beverage[2] = new Tea("ginsengTea");
+		beverage[3] = new Coffee("CafeLatte");
+		beverage[4] = new Tea("redginsengTea");
+		getSalesInfo(beverage);
+		System.out.println("총 판매 금액==>"+getTotalPrice(beverage));
+		System.out.println("Coffe의 판매 개수=>"+Coffee.amount+"잔");
+		System.out.println("Tea의 판매 개수=>"+Tea.amount+"잔");
+	}
+	
+	public static void getSalesInfo(Beverage[] beverage) {
+		for(int i=0;i<beverage.length;i++) {
+			System.out.println((i+1)+"번째");
+			beverage[i].print();
+		}
+	}
+	public static int getTotalPrice(Beverage[] beverage) {
+		int totalPrice = 0;
+		for(Beverage product:beverage) {
+			totalPrice = totalPrice + product.getPrice();
+		}
+		return totalPrice;
+	}
+	}
+ 
+package polymorphism;
+
+public class Coffee extends Beverage {
+	static int amount;
+	public Coffee() {
+		
+	}
+	public Coffee(String name) {
+		super(name);
+		amount++;
+		calcPrice();
+	}
+	@Override
+	public void calcPrice() {
+		// TODO Auto-generated method stub
+		if(getName().equals("Americano")) {
+			setPrice(1500);
+		}else if(getName().equals("CafeLatte")) {
+			setPrice(2500);
+		}else if(getName().equals("Caapuccino")) {
+			setPrice(3000);
+		}else {
+			price = 0;
+		}
+	}
+
+}
+package polymorphism;
+
+public class Tea extends Beverage {
+	static int amount;
+	public Tea() {
+		
+	}
+	public Tea(String name) {
+		super(name);
+		amount++;
+		calcPrice();
+	}
+	@Override
+	public void calcPrice() {
+		// TODO Auto-generated method stub
+		if(getName().equals("lemonTea")) {
+			setPrice(1500);
+		}else if(getName().equals("ginsengTea")) {
+			setPrice(2000);
+		}else if(getName().equals("redginsengTea")) {
+			setPrice(2500);
+		}else {
+			price = 0;
+		}
+	}
+
+}
