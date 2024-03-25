@@ -1,0 +1,87 @@
+package oop.polyinter;
+
+/*
+ * 인터페이스특징
+ * => 추상메소드만 정의하는 특별한 클래스
+ * => 인터페이스를 정의하고 사용하면서 다형성을 적용할 수 있고 다중상속을 구현할 수 있다
+ * => 상위타입으로 사용될 특별한 클래스
+ * 
+ * 1. 인터페이스는 interface라는 키워드를 이용해서 정의
+ * 2. 인터페이스는 추상메소드만 정의하는 특별한 클래스이므로
+ *	  -인터페이스에 정의하는 메소드는 public과 abstract이 생략이 가능
+ *	  -하위클래스에서 오버라이딩될때 자동으로 public이 추가되면서 구현된다
+ *	  -리턴타입이나 매개변수는 일반 메소드와 동일하게 정의
+ * 3. 인터페이스가 인터페이스를 상속하는 경우 extends키워드를 이용해서 상속
+ * 	  - 인터페이스끼리 상속하는 경우 다중상속이 가능
+ * 	  - ,로 구분해서 사용
+ * 4. 클래스가 인터페이스를 상속하는 경우 다중상속이 가능
+ * 	  - 클래스가 인터페이스를 상속하는 경우는 구현. extends 대신 implements키워드를 써서 상속
+ * 	  - 클래스가 인터페이스를 상속하는 경우 여러 개를 상속할 수 있다. (,로 구분해서 정의)
+ * 5. 하나의 클래스가 클래스도 상속하고 인터페이스도 상속하는 경우
+ * 		class A extends Super implements InterA{
+ * 			  ---------
+ * 
+*/
+interface SuperInterfaceA{
+	void show();
+}
+interface InterA extends SuperInterfaceA{
+	void test();
+}
+interface InterB{
+	void change();
+}
+interface ChildInterface extends InterA, InterB{
+	
+}
+class Myclass implements InterA, InterB{
+
+	@Override
+	public void show() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void test() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void change() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
+interface InterC{
+	
+}
+class MyChild extends Myclass implements InterC{
+	public void test() {
+		
+	}
+}
+public class InterfaceTest01 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Myclass obj = new MyChild();
+		InterC obj2 = new MyChild();
+		test(obj);
+		run(obj);
+		run(obj2);
+	}
+	public static void test(Myclass obj) {
+		// TODO Auto-generated method stub
+		
+	}
+	public static void run(InterC obj) {
+		
+	}
+	public static void run(Myclass obj) {
+		
+	}
+
+}
