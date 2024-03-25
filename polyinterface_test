@@ -1,0 +1,22 @@
+package oop.polyinter;
+
+import polymorphism.Beverage;
+import polymorphism.Coffee;
+import polymorphism.Tea;
+
+public class InstanceOfTest {
+	public static void main(String[] args) {
+		Beverage obj = new Coffee("아메리카노");
+		Beverage obj2 = new Tea("케모마일");
+		if(obj instanceof Beverage) {
+			System.out.println("Beverage타입");
+		}else {
+			System.out.println("Beverage타입이 아니다");
+		}
+		if(obj instanceof Coffee) {
+			System.out.println("Coffee타입");
+		}else {
+			System.out.println("Coffee타입이 아니다");
+		}
+	}
+}
