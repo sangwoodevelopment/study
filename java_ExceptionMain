@@ -1,0 +1,43 @@
+package exception;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class ExceptionTest04 {
+
+	public static void main(String[] args) {
+		Scanner key = new Scanner(System.in);
+		String str = null;
+		try {
+			System.out.println("시작");
+			System.out.println("숫자입력:");
+			int num1 = key.nextInt();
+			System.out.println("나눌 숫자 입력:");
+			int num2 = key.nextInt();
+			System.out.println("결과=>"+(num1/num2));
+			if(num1%2==0) {
+				System.out.println(args[0]);
+			}else {
+				System.out.println("종료:"+str.length());
+			}
+			System.out.println("종료:"+str.length());
+		}catch(ArithmeticException e) {
+			System.out.println("0으로 나눔");
+		}catch(InputMismatchException e) {
+			System.out.println("사용자가 문자를 입력함");
+		}catch(NullPointerException e) {
+			System.out.println("널이야..");
+		}catch(Exception e) {
+			System.out.println("기타오류..");
+		}
+		// TODO Auto-generated method stub
+	/*	try {
+		System.out.println(10/0);
+		String str = null;
+		str.lastIndexOf(10);
+		System.out.println(args[0]);
+	}catch(Exception e) {
+		System.out.println("예외발생");
+		}*/
+	}
+}
