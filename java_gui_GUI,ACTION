@@ -1,0 +1,79 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.Container;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+class MyLoginView extends JFrame{
+
+	JTextField text;
+	JButton btn;
+	JTextArea content;
+	
+	MyLoginView(String title){
+		super(title);
+		//화면디자인
+		display();
+		eventStart();
+		this.setSize(350, 300);//JFrame사이즈
+		this.setVisible(true);//JFrame창을 화면에 출력
+		//x버튼 누르면 프로그램이 종료되도록 작업
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	public void display() {
+		Container c = this.getContentPane();
+		content = new JTextArea(5,30);
+		JScrollPane scroll = new JScrollPane(content);
+		c.add(scroll,BorderLayout.CENTER);
+		JLabel label = new JLabel("텍스트입력");
+		JPanel p1 = new JPanel();
+		text = new JTextField(20);
+		btn = new JButton("전송");
+		p1.add(label);
+		p1.add(text);
+		p1.add(btn);
+		c.add(p1,BorderLayout.SOUTH);
+	}
+	public void eventStart() {
+		btn.addActionListener(new ActionEventListener(this));
+	}
+}
+public class GUITest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyLoginView loginview = new MyLoginView("로그인");
+	}
+
+}
+
+package gui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ActionEventListener implements ActionListener{
+
+MyLoginView mainView;
+	
+	public ActionEventListener(MyLoginView mainView) {
+		super();
+		this.mainView = mainView;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==mainView.text | 
+				e.getSource()==mainView.btn){
+			mainView.content.append(mainView.text.getText()+"\n");
+			mainView.text.setText("");
+		}
+	}
+}
