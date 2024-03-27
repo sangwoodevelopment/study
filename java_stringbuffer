@@ -1,0 +1,33 @@
+package api.lang;
+
+public class StringStringBufferTest {
+	public static void stringCheck(int count) {
+		long start = System.nanoTime();//
+		String str = new String("java");
+		for (int i = 1; i <= count; i++) {
+			// str = str+"java";//str에 java 문자열을 append
+			str = str + new String("java");
+		}
+		long end = System.nanoTime();
+		System.out.println("str = str + java");
+		System.out.println("실행시간:" + (end - start));
+	}
+
+	public static void stringbufferCheck(int count) {
+		long start = System.nanoTime();
+		
+		StringBuilder str = new StringBuilder("java");
+		for (int i = 1; i <= count; i++) {
+			str.append("java");// str에 java 문자열을 append
+		}
+		long end = System.nanoTime();
+		System.out.println("str.append('java')");
+		System.out.println("실행시간:" + (end - start));
+	}
+
+	public static void main(String[] args) {
+		int count = 10000;
+		stringCheck(count);
+		System.out.println("================");
+	}
+}
