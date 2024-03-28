@@ -1,0 +1,27 @@
+package api.lang;
+
+import java.util.ArrayList;
+
+//ArrayList에서 ArrayList저장하기
+public class ArrayListTest03 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<ArrayList<String>> lists = new ArrayList<>();
+		ArrayList<String> list = new ArrayList<>();
+		for(int row=1; row<=5; row++) {
+			for(int i=1; i<=5; i++) {
+				list.add("*");
+			}
+			lists.add(list);
+//		for(String star:list) {
+//			System.out.print(star+"\t");
+//		}
+		}
+		System.out.println(lists);
+		//0328 mission
+		//1.코드분석하기
+		//2. ArrayList<String> list = new ArrayList<>(); 선언된 위치가 다르면 실행이 다르게 되는 이유?
+		//lists에 저장된 데이터를 위의 형식에 맞게 출력하기
+	}
+}
