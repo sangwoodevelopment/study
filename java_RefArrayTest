@@ -1,0 +1,35 @@
+package api.util;
+
+import api.lang.Person;
+
+public class RefArrayTest {
+	public static void main(String[] args) {
+		Person[] personlist = new Person[5];
+		System.out.println(personlist[0]);
+		personlist[0] = new Person("제이홉", "광주", 30);
+		personlist[1] = new Person("케이", "대구", 25);
+		personlist[2] = new Person("에이", "서울", 32);
+		personlist[3] = new Person("비", "대전", 22);
+		personlist[4] = new Person("씨", "부산", 26);
+		//나머지 Person객체를 할당
+		/*[출력형태]
+		 * 제이홉 - 광주 
+		 * ...
+		 * ...
+		*/
+		print(personlist);
+	}
+	//Person[]의 정보를 출력하는 print메소드를 정의하고 구현
+
+	private static void print(Person[] personlist) {
+		// TODO Auto-generated method stub
+		for(Person person : personlist) {
+			if(person !=null) {
+				System.out.println(person.getName()+":"+person.getAddr());
+			}
+		}
+		
+	}
+
+
+}
