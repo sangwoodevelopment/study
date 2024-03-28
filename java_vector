@@ -1,0 +1,28 @@
+package api.lang;
+
+import java.util.Vector;
+
+public class VectorExam {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Vector<Integer> sco = new Vector<Integer>();
+		
+		sco.add(78);
+		sco.add(99);
+		sco.add(100);
+		sco.add(95);
+		sco.add(100);
+		
+		int total = 0;
+		for(int score : sco) {
+			total += score;
+		}
+		double ave = (double) total/sco.size();
+		
+		System.out.println("총점:"+total);
+		System.out.println("평균:"+ave);
+		
+	}
+
+}
