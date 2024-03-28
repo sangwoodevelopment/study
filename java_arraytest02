@@ -1,0 +1,48 @@
+package api.lang;
+
+import java.util.ArrayList;
+import java.util.List;
+
+//List - ArrayList의 기타 메소드 사용방법
+//List는 중복이 허용
+public class ArrayListTest02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<String> list = new ArrayList<>();
+		list.add("java");
+		list.add("oracle");
+		list.add("servlet");
+		list.add("jsp");
+		list.add("spring");
+		display(list);
+		//업데이트 4번 요소의 값을 수정
+		list.set(4, "spring & spring boot");
+		display(list);
+		list.add("spring & spring boot");
+		display(list);
+		System.out.println("사이즈=>"+list.size());
+		//지우기
+		list.remove(1);
+		list.remove("spring & spring boot");//저장된 객체를 지정해서 삭제
+		display(list);
+		System.out.println(list.contains("java"));
+		System.out.println(list.contains("spring"));
+		System.out.println(list.isEmpty());
+		
+		List<String> list2 = new ArrayList<>();
+		list2.add("Mybatis");
+		list2.add("JPA");
+		list2.add("Mongodb");
+		display(list2);
+		list2.addAll(list);
+		display(list2);
+	}
+	public static void display(List<String> list) {
+		System.out.println("==================");
+		for(String data:list) {
+			System.out.println(data);
+		}
+	}
+
+}
