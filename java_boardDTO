@@ -1,0 +1,59 @@
+package api.util;
+
+public class BoardDTO {
+	private int num;
+	private String title;
+	private String content;
+	private String write;
+	private String date;
+	
+	public BoardDTO(int num, String title, String content, String write, String date) {
+		super();
+		this.num = num;
+		this.title = title;
+		this.content = content;
+		this.write = write;
+		this.date = date;
+	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getWrite() {
+		return write;
+	}
+
+	public void setWrite(String write) {
+		this.write = write;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
+}
