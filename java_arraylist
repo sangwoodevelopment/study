@@ -1,0 +1,20 @@
+package api.util;
+
+import java.util.ArrayList;
+
+public class BoardExam {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<BoardDTO> boardList = new ArrayList<>();
+		
+		boardList.add(new BoardDTO(1, "제목1", "내용1", "bts", "2024-03-29"));
+		boardList.add(new BoardDTO(2, "제목2", "내용2", "bts2", "2024-02-29"));
+		boardList.add(new BoardDTO(3, "제목2", "내용3", "bts3", "2024-01-29"));
+		
+		for (BoardDTO board : boardList) {
+            System.out.println(board.getNum()+"\t"+ board.getTitle()+"\t"+ board.getContent()+"\t"+ board.getWrite()+"\t"+ board.getDate());
+        }
+	}
+
+}
