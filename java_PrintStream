@@ -1,0 +1,16 @@
+package api.io;
+
+import java.io.PrintStream;
+
+public class PrintStreamTest {
+
+	public static void main(String[] args)throws Exception {
+		// TODO Auto-generated method stub
+		PrintStream ps = new PrintStream("src/data/p_out.txt");
+		ps.println(123);
+		ps.println("java");
+		ps.println('c');
+		ps.close();
+	}
+
+}
