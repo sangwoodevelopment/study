@@ -1,0 +1,47 @@
+package api.io;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+//읽기는 BufferedReader
+//쓰기는 PrintWriter
+public class PrintWriterTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//fstFile1을 BufferedReader로 읽어서 PrintWriter로 out.txt로 출력
+		BufferedReader br =null;
+		PrintWriter pw = null;
+		
+		try {
+			br = new BufferedReader(new FileReader("src/data/fstFile1.txt"));
+			pw = new PrintWriter("src/data/out.txt");
+			while(true) {
+				String line = br.readLine();
+				if(line==null) {
+					break;
+				}
+				pw.println(line);
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(br!=null)br.close();
+				if(pw!=null)pw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+}
