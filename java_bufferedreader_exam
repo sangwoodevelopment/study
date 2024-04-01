@@ -1,0 +1,59 @@
+package api.io;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Grade {
+
+	public static void main(String args[]) { 
+		
+		Grade grade = new Grade();
+		
+		String fileName = "score.txt";
+		grade.printGrade(fileName);
+	}
+
+		
+	public void printGrade(String fileName) {
+		
+		/* 이곳에 프로그램을 완성하십시오. */ 
+		BufferedReader br =null;
+		FileWriter fw = null;
+		
+		try {
+			br = new BufferedReader(new FileReader("src/data/"+fileName));
+			int total = 0;
+			int count = 0;
+			while(true) {
+				String line = br.readLine();
+				if(line==null) {
+					break;
+				}
+				String[] datas = line.split(",");
+				total = total + Integer.parseInt(datas[1]);
+				System.out.println(datas[0]+"의 점수는"+datas[1]+"입니다");
+				count++;
+			}
+			System.out.println("모두의 총점"+total+"점 입니다");
+			System.out.println("모두의 평균"+(total/count)+"점 입니다");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+			if(br!=null)
+				
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+	}
+}
