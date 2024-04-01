@@ -1,0 +1,46 @@
+package api.io;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileReaderExam {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		FileReader fis = null;
+		try {
+			//fis = new FileReader("src/data/result.txt");
+			fis = new FileReader("src/data/p_out.txt");
+			int count = 0;
+			long start = System.nanoTime();
+			
+			while(true) {
+				int data = fis.read();
+				if(data==-1) {
+					break;
+				}
+				System.out.print((char)data);
+				count++;
+			}
+			long stop = System.nanoTime();
+			System.out.println();
+			System.out.println("실행횟수=>"+count);
+			System.out.println("실행시간=>"+(stop-start));
+		}catch(FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("filenotfoundexception");
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(fis!=null)fis.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+}
