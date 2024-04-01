@@ -1,0 +1,48 @@
+package api.io;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+public class FileCompareUtil {
+
+	public static void main(String[] args) {
+		
+			try {
+				ArrayList<String> list = compareFile("src/data/fstFile1.txt", "src/data/scdFile1.txt");
+				for(String data:list) {
+					System.out.println(data);
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		
+	}
+	public static ArrayList<String> compareFile(String fstFileName, String scdFileName) throws Exception {
+    // implements compareFile method.
+		ArrayList<String> result = new ArrayList<>();
+		BufferedReader fstFile = new BufferedReader(new FileReader(fstFileName));
+		BufferedReader scdFile = new BufferedReader(new FileReader(scdFileName));
+		int count = 0;
+		
+		while(true) {
+			String line1 = fstFile.readLine();
+			String line2 = scdFile.readLine();
+			if(line1==null & line2==null) {
+				break;
+			}
+			count++;
+			if(!line1.equals(line2)) {//line1과 line2가 문자열이 같지 않으면
+				result.add("LINE"+count+":"+line2);
+				//System.out.println("LINE"+count+":"+line2);
+			}
+		}	
+		fstFile.close();
+		scdFile.close();
+		return result;
+
+		
+	}
+}
