@@ -1,0 +1,55 @@
+package api.io;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class FileCopy_BufferedReader {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BufferedReader br = null;
+		FileWriter fw = null;
+		int count = 0;
+		long start = System.nanoTime();
+		try {
+			br = new BufferedReader(new FileReader("src/api/lang/Person.java"));
+			fw = new FileWriter("src/data/output.txt");
+//		String line ="";
+//		while((line=br.readLine())!=null){
+//			fw.write(line);
+//			count++;
+//		}
+		while(true) {
+			String line = br.readLine();
+			if(line==null) {
+				break;
+			}
+			fw.write(line);
+			count++;
+		}
+		long stop = System.nanoTime();
+		System.out.println();
+		System.out.println("실행횟수=>"+count);
+		System.out.println("실행시간=>"+(stop-start));
+			
+		}catch(FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("filenotfoundexception");
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(br!=null)br.close();
+				if(fw!=null)fw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+}
