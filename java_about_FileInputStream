@@ -1,0 +1,48 @@
+package api.io;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+//파일입력을 위한 작업
+//1. 파일 오픈 - 생성자
+/* -> OS가 관리하는 리소스인 파일과 연결하는 작업을 처리
+ * -> 관련 API를 이용해서 객체를 생성하는 작업
+ * 2. 파일엑세스
+ * -> 파일을 읽거나 파일에 쓰기
+ * -> 바이트단위나 문자단위로 데이터를 처리
+ * -> 버퍼를 이용해서 효율적으로 IO작업을 처리할 수 있다
+ * 
+ * 3. 파일닫기 (파일연결을 해제 - 자원해제)
+*/
+public class FileInputStreamTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		FileInputStream fis = null;
+		try {
+			// 1. 상대경로
+			// FileInputStream fis = new FileInputStream("src/data/test.txt");
+			// 2. 절대경로
+			//FileInputStream fis = 
+			//	new FileInputStream("C:\\backend23\\work\\javawork\\advancedJava\\src\\data\\test.txt");
+			 fis = new FileInputStream("C:/backend23/work/javawork/advancedJava/src/data/test.txt");
+			System.out.println(fis.read());
+		} catch (FileNotFoundException e) {
+			System.out.println("파일이름이 틀림");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch(IOException e) {
+			System.out.println("파일을 읽는 중에 오류가 발생 할 수 있음..");
+			e.printStackTrace();
+		} finally {
+			try {
+				if(fis!=null)fis.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+}
