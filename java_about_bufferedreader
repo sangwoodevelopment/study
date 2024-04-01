@@ -1,0 +1,50 @@
+package api.io;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+//BufferedReader는 입출력 작업의 효율을 높이기 위해서 임시로 읽은 데이터를 저장할 수 있는 버퍼를 사용해서
+//입출력을 모아서 한 번에 처리하는 기능을 제공
+//BufferedReader와 같은 보조스트림은 실제 데이터소스(파일, 키보드입력, 네트워크입력...)와 직접 연결이 불가능하므로
+//-> 실제 데이터소스와 연결이 되는 스트림객체를 생성한 후 보조스트림과 연결시켜야 한다
+import java.io.IOException;
+
+
+public class BufferedReaderTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//보조스트림은 자체적으로 입출력을 수행할 수 없고
+		//입출력을 하도록 설정된 클래스를 도와주는 역할을 수행한다
+		FileReader fr = null;
+		BufferedReader br = null;
+		try {
+			//fr = new FileReader("src/data/test.txt");
+			//br = new BufferedReader(fr);
+			br = new BufferedReader(new FileReader("src/data/test.txt"));
+			while(true) {
+				String line = br.readLine();
+				if(line==null) {
+					break;
+				}
+				System.out.println(line);
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+			if(br!=null)
+				
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+	}
+
+}
