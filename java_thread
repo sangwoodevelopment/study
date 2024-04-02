@@ -1,0 +1,25 @@
+package thread;
+
+public class ThreadStateTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyThread t = new MyThread();
+		System.out.println("쓰레드의 상태:"+t.getState());
+		t.start();
+		System.out.println("쓰레드의 상태:"+t.getState());
+		System.out.println("쓰레드의 상태:"+t.getState());
+		System.out.println("쓰레드의 상태:"+t.getState());
+		System.out.println("쓰레드의 상태:"+t.getState());
+		System.out.println("쓰레드의 상태:"+t.getState());
+		System.out.println("쓰레드의 상태:"+t.getState());
+		System.out.println("쓰레드의 상태:"+t.getState());
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
