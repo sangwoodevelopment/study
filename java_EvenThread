@@ -1,0 +1,56 @@
+package thread;
+
+class EvenThread extends Thread {
+
+	private boolean state = true;
+	EvenThread(String name){
+		super(name);
+	}
+	public void run() {
+		int i = 2;
+		while (state & i<=100) {
+			System.out.println(getName()+":"+i);
+			try { 
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			i = i + 2;
+		}
+		System.out.println("현재 쓰레드의 상태:종료");
+	}
+	public void stopThread() {
+		state = false;
+	}
+}
+class OddThread extends Thread{
+	OddThread(String name){
+		super(name);
+	}
+	public void run() {
+		int i = 1;
+		while(!Thread.currentThread().isInterrupted() & i<=1000) {
+			System.out.println(getName()+":"+i);
+			try {
+				Thread.sleep(200);
+			}catch(InterruptedException e) {
+				e.printStackTrace();
+			}
+			i = i+2;
+			if(i>70) {
+				interrupt();
+			}
+		}
+	}
+}
+
+public class ThreadExam02{
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		EvenThread t = new EvenThread("짝수");
+		t.start();
+		OddThread t2 = new OddThread("홀수");
+		t2.start();
+	}
+
+}
