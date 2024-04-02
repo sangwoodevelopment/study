@@ -1,0 +1,43 @@
+package thread;
+class MyThread extends Thread{
+
+	@Override
+	public void run() {
+		for(int i =1; i<=10000000; i++) {
+			
+		}
+		System.out.println(getName()+"쓰레드의 우선순위->"+getPriority());
+	}
+	
+}
+
+
+public class ThreadPriorityTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(Thread.MAX_PRIORITY);
+		System.out.println(Thread.MIN_PRIORITY);
+		System.out.println(Thread.NORM_PRIORITY);
+		System.out.println("코어수:"+Runtime.getRuntime().availableProcessors());
+	
+		for(int i=1; i<=3; i++) {
+			MyThread t = new MyThread();
+			t.start();
+		}
+		try {
+			Thread.sleep(1000);
+		}catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+		for(int i=1; i<=10; i++) {
+			MyThread t = new MyThread();
+			t.setName("t"+i);
+			if(i==7) {
+				t.setPriority(Thread.MAX_PRIORITY);
+			}
+			t.start();
+		}
+	}
+
+}
