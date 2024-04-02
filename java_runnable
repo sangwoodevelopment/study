@@ -1,0 +1,51 @@
+package thread;
+//ThreadExam01에서 작업한 내용을 Runnable인터페이스를 구현하는 코드로 변경
+
+//AlphaRunnable, DigitRunnbale
+
+public class AlphaRunnable implements Runnable {
+
+	public class ThreadExam01 extends Thread {
+
+		@Override
+		public void run() {
+
+			for (char i = 'A'; i < 'Z'; i++) {
+				System.out.println(i);
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	class DigitRunnable implements Thread {
+
+		@Override
+		public void run() {
+			for (int i = 1; i <= 100; i++) {
+				System.out.println(i + "(" + getName() + ")");
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				if (i % 10 == 0) {
+					System.out.println();
+				}
+			}
+		}
+
+	}
+
+	public class Runnable01{
+		public static void main(String[] args) {
+			// TODO Auto-generated method stub
+			Thread t1 = new Thread(new AlphaRunnable());
+			Thread t2 = new Thread(new DigitRunnable());
+			t1.start();
+			t2.start();
+		}
+	}
