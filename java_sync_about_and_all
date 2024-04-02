@@ -1,0 +1,154 @@
+package thread.sync;
+//계좌이체를 여러 번 처리하면서 공유객체에 셋팅된 계좌의 정보가 어떻게 변경되는 지 살펴보기
+//
+public class ThreadSyncTest02 {
+	public static void main(String[] args) {
+		//공유객체를 생성 - 계좌이체 정보를 셋팅할 객체
+		Obj obj = new Obj();
+		obj.acc1 = new Account("111-222-333",10000000, "김서연");
+		obj.acc2 = new Account("777-888-999",50000000, "BTS");
+
+		//1. 쓰레드생성 후 테스트해보기
+		//=> 계좌이체하는 쓰레드 B에서 출금해서 A에 입금하기 작업을 20번 처리하는 쓰레드
+		//    1000000만원을 출금했습니다.
+		//    1000000만원을 입금했습니다.
+		
+		//=> 두 계좌의 잔액을 더해서 출력하는 쓰레드 5번
+		//   총 잔액 => _________
+		//쓰레드시작
+		//===> 동기화 처리가 되지 않은 경우 계좌이체쓰레드가 출금한 상태에서 더하는 쓰레드가 Obj를 사용하게 되면
+		//     5900만원이 출력
+		//2. 동기화처리
+		//  ====> 잔액은 늘 6000만원으로 출력
+		AccountTransferThread t1 = new AccountTransferThread(obj);
+		Thread t2 = new Thread(new AccountSumThread(obj));
+		
+		t1.start();
+		t2.start();
+	}
+
+}
+
+
+package thread.sync;
+
+public class Account {
+	private String accId;
+	private long balance;
+	private String ownerName;
+	
+	public Account() {
+		
+	}
+
+	public Account(String accId, long balance, String ownerName) {
+		super();
+		this.accId = accId;
+		this.balance = balance;
+		this.ownerName = ownerName;
+	}
+	//입금하기
+	public void deposit(long amount){
+		balance = balance + amount;
+	}
+	//출금하기
+	public void withdraw(long amount){
+		balance = balance - amount;
+	}
+	public String getAccId() {
+		return accId;
+	}
+
+	public void setAccId(String accId) {
+		this.accId = accId;
+	}
+
+	public long getBalance() {
+		return balance;
+	}
+
+	public void setBalance(long balance) {
+		this.balance = balance;
+	}
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+	
+}
+package thread.sync;
+
+public class AccountSumThread implements Runnable{
+	Obj obj;//공유객체
+
+	public AccountSumThread(Obj obj) {
+		super();
+		this.obj = obj;
+	}
+
+	@Override
+	public void run() {
+		//공유객체의 메소드를 호출
+		//obj.출금하기();
+		for(int i=1;i<=5;i++) {
+			synchronized (obj) {
+				long total = obj.acc1.getBalance() + obj.acc2.getBalance();
+				System.out.println("총 잔액=====>"+total);
+			}
+			
+		}
+	}
+	
+}
+package thread.sync;
+
+public class AccountTransferThread extends Thread{
+	Obj obj;//공유객체
+
+	public AccountTransferThread(Obj obj) {
+		super();
+		this.obj = obj;
+	}
+
+	@Override
+	public void run() {
+		//공유객체의 메소드를 호출
+		//obj.계좌이체();
+		for(int i=1;i<=20;i++) {
+			synchronized (obj) {
+				obj.acc2.withdraw(1000000);
+				System.out.println("100만원을 출금했습니다.");
+				obj.acc1.deposit(1000000);
+				System.out.println("100만원을 입금했습니다.");
+			}
+		}
+	}
+	
+}
+package thread.sync;
+//공유객체 - 계좌이체에 필요한 두 계좌의 정보를 가지고 있는 객체
+public class Obj {
+	Account acc1;//김서연계좌 - 이체를 받을 계좌
+	Account acc2;//BTS계좌 - 이체할계좌
+	/*공유객체에 메소드를 직접 정의하고 사용하는 경우*/
+	public synchronized void 계좌이체() {
+		for(int i=1;i<=20;i++) {
+			acc2.withdraw(1000000);
+			System.out.println("100만원을 출금했습니다.");
+			acc1.deposit(1000000);
+			System.out.println("100만원을 입금했습니다.");
+		}
+	}
+	
+	public synchronized void 출금하기() {
+		for(int i=1;i<=5;i++) {
+			long total = acc1.getBalance() + acc2.getBalance();
+			System.out.println("총 잔액=====>"+total);
+		}
+	}
+}
+
