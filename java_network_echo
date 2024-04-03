@@ -1,0 +1,83 @@
+package network;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+//키보드로 입력하는 내용을 서버로 보내기
+//서버가 다시 보내오는 메시지를 콘솔에 출력
+public class EchoClientTest01 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Socket socket = null;
+		BufferedReader in = null;
+		PrintWriter out = null;
+		BufferedReader keyin = null;
+		try {
+			socket = new Socket("192.168.0.242", 12345);
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			
+			out = new PrintWriter(socket.getOutputStream(),true);
+			keyin = new BufferedReader(new InputStreamReader(System.in));
+			String sendMsg="";
+			String reMsg="";
+			while((sendMsg=keyin.readLine())!=null) {
+				//클라이언트 -> 서버(키보드입력한 데이터 보내기)
+				out.println(sendMsg);
+				//클라이언트 <- 서버
+				reMsg = in.readLine();
+				System.out.println("서버=>"+reMsg);
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+
+package network;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class EchoServerTest01 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Socket client = null;
+		BufferedReader in = null;
+		PrintWriter out = null;
+		try {
+			ServerSocket server = new ServerSocket(12345);
+			System.out.println("클라이언트 접속을 기다림");
+			
+			while(true) {
+				client = server.accept();
+				String ip = client.getInetAddress().getHostAddress();
+				System.out.println(ip+"접속");
+				in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+				out = new PrintWriter(client.getOutputStream(),true);
+				
+				String reMsg="";
+				while(true) {
+					reMsg = in.readLine();
+					if(reMsg==null) {
+						break;
+					}
+					System.out.println("클라이언트=>"+reMsg);
+					out.println(reMsg+"^^");
+				}
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}
