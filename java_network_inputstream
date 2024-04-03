@@ -1,0 +1,18 @@
+package network;
+
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+
+public class DataInputStreamTest {
+
+	public static void main(String[] args) throws Exception{
+		// TODO Auto-generated method stub
+		DataInputStream dis = new DataInputStream(new FileInputStream("src/data/dos.txt"));
+		
+		System.out.println(dis.readInt());
+		System.out.println(dis.readDouble());
+		System.out.println(dis.readUTF());
+		dis.close();
+	}
+
+}
