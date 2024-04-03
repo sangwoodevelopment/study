@@ -1,0 +1,115 @@
+package network;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+//클라이언트와 통신하기
+//클라이언트와 메시지 주고 받기 - 클라이언트의 output을 받을 수 있도록 input스트림을 준비
+//						- 클라이언트에게 output을 보낼 수 있도록 output스트림을 준비
+public class MyNetServerTest02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Socket client = null;
+		InputStream in = null;//클라이언트가 보내오는 데이터를 읽기 위한 스트림객체
+		DataInputStream dis = null;//클라이언트가 보내오는 데이터를 읽기 위한 보조스트림
+		
+		OutputStream os = null;//클라이언트에게 보낼 데이터를 출력하기 위한 스트림객체
+		DataOutputStream dos = null;//클라이언트에게 보낼 데이터를 출력하기 위한 보조스트림
+		try {
+			//1. ServerSocket을 생성해서 port를 열고 클라이언트 접속을 기다림
+			ServerSocket server = new ServerSocket(12345);
+			System.out.println("클라이언트 접속을 기다림");
+			while(true) {
+				//2. 클라이언트가 접속하면 접속한 클라이언트와 통신할 수 있는 소켓객체를 생성
+				client = server.accept();
+				String ip = client.getInetAddress().getHostAddress();
+				System.out.println(ip+"접속");
+				
+				//3. 클라이언트와 통신할 수 있도록 스트림객체를 생성
+				
+				//	1) 클라이언트가 전송하는 데이터를 읽기 위한 스트림객체를 클라이언트소켓객체를 통해 생성
+				in = client.getInputStream();
+				dis = new DataInputStream(in);
+				
+				//	2) 클라이언트에게 전송할 데이터를 보내기 위한 스트림객체를 클라이언트소켓객체를 통해 생성
+				os = client.getOutputStream();
+				dos = new DataOutputStream(os);
+				
+				//=====================통신하기======================
+				//4. 서버 -> 클라이언트(순서가 중요)
+				//	 output
+				dos.writeUTF(ip+"님 접속을 환영합니다");
+				dos.writeInt(20000);
+				
+				//5. 서버 <- 클라이언트
+				//	 input
+				String clientMsg = dis.readUTF();
+				System.out.println("클라이언트가 전송한 메세지->"+clientMsg);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
+
+package network;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+public class MyNetClientTest02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Socket socket = null;
+		InputStream in = null;//서버가 보내오는 데이터를 읽기 위한 스트림객체
+		DataInputStream dis = null;//서버가 보내오는 데이터를 읽기 위한 보조스트림
+		
+		OutputStream os = null;//서버에게 보낼 데이터를 출력하기 위한 스트림객체
+		DataOutputStream dos = null;//서버에게 보낼 데이터를 출력하기 위한 보조스트림
+		
+		try {
+			//1. 서버에 접속
+			socket = new Socket("192.168.0.242", 12345);
+			
+			//2. 서버와 통신하기 위한 input/output스트림객체 생성
+			in = socket.getInputStream();
+			dis = new DataInputStream(in);
+			
+			os = socket.getOutputStream();
+			dos = new DataOutputStream(os);
+			
+			//3. 클라이언트 <- 서버(서버가 보내온 메세지를 읽기 - 2번 연속 읽기)
+			//	 -------
+			//	  input
+			String serverMsg1 = dis.readUTF();
+			int serverMsg2 = dis.readInt();
+			System.out.println("서버가 전송한 메세지1 => "+serverMsg1);
+			System.out.println("서버가 전송한 메세지2 => "+serverMsg2);
+			
+			
+			//4. 클라이언트 -> 서버
+			dos.writeUTF("안녕하세요 서버님 클라이언트입니다");
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
