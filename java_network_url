@@ -1,0 +1,62 @@
+package network;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+//URL클래스
+//웹상의 주소를 자바에서 액세스할 수 있도록 제공되는 클래스
+//네트워크로 연결할 수 있고 리소스를 가져올 수 있다
+public class URLTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			//URL url = new URL("https://www.naver.com");
+			URL url = new URL("https://search.naver.com/search.naver?where=news&query=%EC%A7%95%EB%8F%99&sm=tab_tmr&nso=so:r,p:all,a:all&sort=0");
+			
+			System.out.println(url);
+			System.out.println("url.getHost()=>"+url.getHost());
+			System.out.println("url.getPath()=>"+url.getPath());
+			//port정보를 리턴
+			//-1을 리턴하는 것은 -1포트로 접속했다라는 의미가 아니라 프로토콜에 등록되어 있는 기본 포트로 접속했다는 의미
+			//http프로토콜의 기본 포트는 80
+			System.out.println("url.getPort()=>"+url.getPort());
+			System.out.println("url.getProtocol()=>"+url.getProtocol());
+			System.out.println("url.getFile()=>"+url.getFile());
+			//InputStream in = url.openStream();
+			//in이 참조하는 데이터를 읽어서 모두 출력하기
+			//input하는 경우 한글이 있으면 BufferedReader를 사용, 바이너리데이터(이미지,동영상,소리...)
+			//BufferedInputStream, FileInputStream
+			//출력: 파일로 - FileOutputStream으로
+			
+			//url.openStream()이 InputStream을 반환하므로 한글이 있는 경우 깨져서 전달이 되므로
+			//Reader의 하위 스트림을 이용해서 읽어주어야 한다
+			//InputStreamReader로 변환 후 빠르게 읽기 위해 BufferedReader로 변환
+			//=> BufferedReader로 openStream의 결과를 바로 받지 못하는 이유는 BufferedReader가 보조스트림이므로
+			//	 바로 InputStream으로 변환하는 기능이 없다
+//			InputStream in = url.openStream();
+//			InputStreamReader isr = new InputStreamReader(in);
+//			BufferedReader br = new BufferedReader(isr);
+			BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+			
+			while(true) {
+				String data = br.readLine();
+				if(data==null) {
+					break;
+				}
+				System.out.println(data);
+				}
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
