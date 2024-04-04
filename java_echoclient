@@ -1,0 +1,103 @@
+package network;
+
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+public class EchoClientTest03 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Socket socket = null;
+		BufferedReader in = null;//서버가 보내오는 데이터를 읽기 위한 스트림객체
+		PrintWriter out = null;//서버가 보내오는 데이터를 읽기 위한 보조스트림
+		
+		BufferedReader keyin = null;//서버에게 보낼 데이터를 출력하기 위한 스트림객체
+		
+		try {
+			//1. 서버에 접속
+			socket = new Socket("192.168.0.242", 50000);
+			
+			//2. 서버와 통신하기 위한 input/output스트림객체 생성
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			out = new PrintWriter(socket.getOutputStream(),true);
+			
+			keyin = new BufferedReader(new InputStreamReader(System.in));
+			
+			String sendMsg="";
+			String reMsg="";
+			
+			System.out.println("서버>>"+reMsg);
+			
+			while((sendMsg=keyin.readLine())!=null) {
+				out.println(sendMsg);
+				reMsg=in.readLine();
+				System.out.println("서버>>"+reMsg);
+			}
+		
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
+
+package network;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Date;
+
+public class EchoServerTest03 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Socket client = null;
+		BufferedReader in = null;
+		PrintWriter out = null;
+		BufferedReader keyin = null;
+		
+		try {
+			ServerSocket server = new ServerSocket(50000);
+			System.out.println("접속대기중");
+			while(true) {
+				client = server.accept();
+				String ip = client.getInetAddress().getHostAddress();
+				System.out.println(ip+"접속");
+				in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+				out = new PrintWriter(client.getOutputStream(),true);
+				keyin = new BufferedReader(new InputStreamReader(System.in));
+				String sendMsg = "";
+				String reMsg = "";
+				while(true) {
+					reMsg = in.readLine();
+					if(reMsg==null) {
+						break;
+					}
+					System.out.println("클라이언트>>"+reMsg);
+					sendMsg = keyin.readLine();
+					out.println(sendMsg);
+				}
+				
+	}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
