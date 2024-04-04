@@ -1,0 +1,79 @@
+package network.single.console.chat;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class ServerSenderThread extends Thread {
+	Socket socket;
+
+	public ServerSenderThread(Socket socket) {
+		super();
+		this.socket = socket;
+	}
+
+	@Override
+	public void run() {
+		PrintWriter out = null;
+		BufferedReader keyin = null;
+		try {
+			out = new PrintWriter(socket.getOutputStream(),true);
+			keyin = new BufferedReader(new InputStreamReader(System.in));
+			String sendMsg="";
+			while(true) {
+				sendMsg = keyin.readLine();
+				if(sendMsg==null) {
+					break;
+				}
+				out.println(sendMsg);
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+}
+
+package network.single.console.chat;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
+
+public class ServerReceiverThread extends Thread{
+	Socket socket;
+	
+	
+	
+	public ServerReceiverThread(Socket socket) {
+		super();
+		this.socket = socket;
+	}
+
+
+
+	@Override
+	public void run() {
+		BufferedReader in = null;
+		try {
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			String reMsg="";
+			while(true) {
+				reMsg=in.readLine();
+				if(reMsg==null) {
+					break;
+				}
+				System.out.println("클라이언트>>"+reMsg);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+
+}
