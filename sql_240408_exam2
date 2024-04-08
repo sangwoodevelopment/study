@@ -1,0 +1,13 @@
+SQL> select ename, sal, comm, decode(job, 'CLERK', sal*0.1,
+    'SALESMAN', sal*0.07,
+    'MANAGER', sal*0.15,
+    'PRESIDENT', sal*0.2,
+    'ANALYST', sal*0.22)
+    as 특별보너스
+    , decode(job, 'CLERK', sal*12 + nvl(comm,0) + sal*0.1,
+    'SALESMAN',  sal*12 + nvl(comm,0) + sal*0.07,
+    'MANAGER',  sal*12 + nvl(comm,0) + sal*0.15,
+   'PRESIDENT',  sal*12 + nvl(comm,0) + sal*0.2,
+   'ANALYST',  sal*12 + nvl(comm,0) + sal*0.22)
+   as 연봉
+   from emp;
