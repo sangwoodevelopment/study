@@ -1,0 +1,20 @@
+1.
+select last_day(sysdate), next_day(sysdate, '금요일')
+from dual;
+2.
+select ename, hiredate, add_months(hiredate, 6) 근무평가일, next_day(add_months(hiredate, 6), '금요일') 금요일
+from emp;
+3.
+select ename, hiredate, sysdate-hiredate day, (sysdate-hiredate)/7 week
+from emp
+order by week desc, ename;
+4.
+select sysdate+5, sysdate-5 from dual;
+5.
+select *
+from emp
+where (sysdate-hiredate)*24 >= 280000;
+6.
+select ename, sysdate, hiredate, months_between(sysdate, hiredate) 근무개월수
+from emp
+where deptno = 10;
