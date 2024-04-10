@@ -1,0 +1,4 @@
+select m.ename as 관리자명, count(e.empno) as 인원수
+from emp e, emp m
+where e.mgr = m.empno
+group by m.ename;
