@@ -1,0 +1,6 @@
+select j.job_title as JOB, sum(e.salary) as "급여"
+from employees e, jobs j
+where e.job_id = j.job_id and j.job_title not like '%Representative'
+group by j.job_title
+having sum(e.salary) > 30000
+order by "급여" asc;
