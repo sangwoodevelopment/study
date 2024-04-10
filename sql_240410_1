@@ -1,0 +1,7 @@
+
+SQL> select employee_id, first_name ||' '|| last_name as name, hire_date
+  2  from employees
+  3  where hire_date like '05%'
+  4  and hire_date < (select hire_date
+  5   from employees
+  6  where first_name = 'Lisa');
