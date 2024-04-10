@@ -1,0 +1,4 @@
+select d.department_name as 부서명, count(d.department_name) as인원수
+from departments d, employees e
+where e.department_id = d.department_id and e.hire_date <= '2005-01-01'
+group by d.department_name;
