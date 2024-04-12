@@ -1,0 +1,38 @@
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class DeleteTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String url="jdbc:oracle:thin:@192.168.0.242:1521:xe";
+		String user="scott";
+		String password="tiger";
+		StringBuffer sql = new StringBuffer();
+		sql.append("delete member ");
+		sql.append("where id='test'");
+		try {
+			//1. 드라이버로딩
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("드라이버로딩성공!");
+			//2. 연결하기
+			Connection con = DriverManager.getConnection(url, user, password);
+			System.out.println("연결성공!"+con);
+			//3. SQL문을 실행하기 위한 객체를 만들기
+			Statement stmt = con.createStatement();
+			System.out.println("statement객체 생성완료!"+stmt);
+			//4. SQL문 실행하기
+			int result = stmt.executeUpdate(sql.toString());
+			//5. 결과처리
+			System.out.println(result+"개 행 삭제성공");
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
