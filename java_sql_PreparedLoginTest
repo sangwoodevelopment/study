@@ -1,0 +1,48 @@
+package jdbc;
+
+import java.sql.Statement;
+import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class PreparedLoginTest {
+	
+
+	public static void main(String[] args) {
+		PreparedLoginTest obj = new PreparedLoginTest();
+		Scanner key = new Scanner(System.in);
+		System.out.println("아이디:");
+		String id = key.nextLine();
+		
+		System.out.println("패스워드:");
+		String pass = key.nextLine();
+		
+		obj.login(id,pass);
+	}
+		// TODO Auto-generated method stub
+		public void login(String id, String pass) {
+		String sql = "select * from member where id = '"+id+"' and pass='" + pass +"'";
+		String url="jdbc:oracle:thin:@192.168.0.242:1521:xe";
+		String user="scott";
+		String password="tiger";
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, user, password);
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			System.out.println(rs);
+			if(rs.next()) {
+				System.out.println(rs.getString("name")+"님 로그인 성공");
+			}else {
+				System.out.println("로그인실패");
+			}
+	}catch(ClassNotFoundException e) {
+		e.printStackTrace();
+	}catch(SQLException e) {
+		e.printStackTrace();
+		}
+	}
+}
+
