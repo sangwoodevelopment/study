@@ -1,0 +1,36 @@
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class PreparedDeleteTest {
+    public static void main(String[] args) {
+        PreparedDeleteTest obj = new PreparedDeleteTest();
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("삭제할 아이디: ");
+        String id = sc.next();
+
+        obj.delete(id);
+    }
+
+    public void delete(String id) {
+        String url = "jdbc:oracle:thin:@192.168.0.111:1521:xe";
+        String user = "scott";
+        String password = "tiger";
+        String sql = "delete from member where id = ?";
+        try {
+            Connection connection = DriverManager.getConnection(url, user, password);
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, id);
+            pstmt.executeUpdate();
+            System.out.println("삭제 성공");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+}
