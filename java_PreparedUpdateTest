@@ -1,0 +1,38 @@
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class PreparedUpdateTest {
+    public static void main(String[] args) {
+        PreparedUpdateTest obj = new PreparedUpdateTest();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("기존 주소:");
+        String addr = sc.nextLine();
+        System.out.print("변경할 주소:");
+        String newaddr = sc.nextLine();
+        obj.update(addr, newaddr);
+    }
+
+    public void update(String addr, String newaddr) {
+        String url = "jdbc:oracle:thin:@192.168.0.111:1521:xe";
+        String user = "scott";
+        String password = "tiger";
+        String sql = "UPDATE member SET addr = ? WHERE addr = ?";
+        try {
+            Connection connection = DriverManager.getConnection(url, user, password);
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, newaddr);
+            pstmt.setString(2, addr);
+            int result = pstmt.executeUpdate();
+            System.out.println(result + "개의 행이 수정되었습니다.");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+}
