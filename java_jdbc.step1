@@ -1,0 +1,76 @@
+package jdbc.step1;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MemberService service = new MemberService();
+		MemberMybatisDAOImpl dao = new MemberMybatisDAOImpl();
+		service.serviceInsert(dao);
+		service.serviceSelect(dao);
+	}
+
+}
+
+package jdbc.step1;
+
+public interface MemberDAO {
+
+	void insert();
+	void select();
+	void update();
+	void delete();
+
+}
+
+
+package jdbc.step1;
+//mybatis로 member테이블에 액세스하는 기능 - member테이블에 CLRUD하는 기능을 수행하는 클래스
+public class MemberMybatisDAOImpl implements MemberDAO{
+	public void insert() {
+		System.out.println("mybatis로 jdbc로 insert하기");
+	}
+	public void select() {
+		System.out.println("mybatis로 jdbc로 select하기");
+	}
+	public void update() {
+		System.out.println("mybatis로 jdbc로 update하기");
+	}
+	public void delete() {
+		System.out.println("mybatis로 jdbc로 delete하기");
+	}
+}
+
+package jdbc.step1;
+
+public class MemberService {
+	MemberSpringDAOImpl dao = new MemberSpringDAOImpl();
+	public void serviceInsert(MemberMybatisDAOImpl dao2) {
+		dao2.insert();
+	}
+	public void serviceSelect(MemberMybatisDAOImpl dao2) {
+		dao2.select();
+	}
+}
+
+package jdbc.step1;
+
+public class MemberSpringDAOImpl implements MemberDAO{
+	public void insert() {
+		System.out.println("spring jdbc로 insert하기");
+	}
+	public void select() {
+		System.out.println("spring jdbc로 select하기");
+	}
+	@Override
+	public void update() {
+		System.out.println("spring jdbc로 update하기");
+	}
+	@Override
+	public void delete() {
+		System.out.println("spring jdbc로 delete하기");
+	}
+}
+
+
+
