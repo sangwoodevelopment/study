@@ -1,0 +1,106 @@
+package jdbc.step3;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class MenuUI {
+	Scanner key = new Scanner(System.in);
+	MemberDAO dao = new MemberDAOImpl();
+	public void insertMenu(){
+		System.out.println("*******사원등록********");
+		System.out.print("아이디:");
+		String id = key.next();
+		System.out.print("패스워드:");
+		String pass = key.next();
+		System.out.print("성명:");
+		String name = key.next();
+		System.out.print("주소:");
+		String addr = key.next();
+		System.out.print("기타:");
+		String info = key.next();
+		//여기에서 MemberDAO의 메소드를 호출하세요
+		MemberDTO user = new MemberDTO(id, pass, name, addr, info);
+		dao.insert(id, pass, name, addr, info);
+		
+	}
+	public void updateMenu(){
+		System.out.println("*******사원수정********");
+		System.out.print("정보:");
+		String info = key.next();
+		System.out.print("주소:");
+		String addr = key.next();
+		System.out.print("아이디:");
+		String id = key.next();
+		//여기에서 MemberDAO의 메소드를 호출하세요
+		dao.update(info, addr, id);
+	}
+	public void deleteMenu(){
+		System.out.println("*******사원삭제********");
+		System.out.print("삭제할id:");
+		String id = key.next();
+		//여기에서 MemberDAO의 메소드를 호출하세요
+		dao.delete(id);
+	}
+	public void findByAddrMenu(){
+		System.out.println("*******사원검색********");
+		System.out.print("주소:");
+		String addr = key.next();
+		//여기에서 MemberDAO의 메소드를 호출하세요
+		List<MemberDTO> searchlist = dao.search("addr", addr);
+		for(MemberDTO user:searchlist) {
+			print(user);
+		}
+	}
+	
+	public void selectMenu(){
+		System.out.println("*******사원조회********");
+		//여기에서MemberDAO의 메소드를 호출하세요 - 전체사원조회
+		ArrayList<MemberDTO> userlist = dao.select();
+		System.out.println("조회된 레코드 갯수:"+userlist.size());
+		//ArrayList에 저장된 DTO를 다양하게 출력할 수 있도록 코드를 작성
+		for(MemberDTO user:userlist) {
+			print(user);
+		}
+	}
+	public void myPageMenu() {
+		// TODO Auto-generated method stub
+		System.out.println("*******마이페이지********");
+		System.out.print("아이디:");
+		String addr = key.next();
+		//myPageMenu메소드에서 입력 받은 아이디로 아이디에 따른 정보를 조회할 수 있도록 코드를 완성
+		//	- MemberDAO, MemberDAOImpl에 메소드를 정의하고 작업하세요
+		MemberDTO user = dao.findById(id);
+		if(user==null) {
+			System.out.println("일치하는 사용자가 없습니다");
+		}else {
+			print(user);
+		}
+	}
+	public void print(MemberDTO user) {
+	System.out.println(user.getId()+"\t");
+	System.out.println(user.getPass()+"\t");
+	System.out.println(user.getName()+"\t");
+	System.out.println(user.getAddr()+"\t");
+	System.out.println(user.getRegDate()+"\t");
+	System.out.println(user.getPoint()+"\t");
+	System.out.println(user.getInfo()+"\t");
+	}
+	public void loginMenu() {
+		System.out.println("*******로그인********");
+		System.out.print("아이디:");
+		String addr = key.next();
+		System.out.print("패스워드:");
+		String pass = key.next();
+		MemberDTO loginUser = dao.login(addr/*id*/ , pass);
+		if(loginUser!=null) {
+			System.out.println("로그인성공");
+			print(loginUser);
+		}else {
+			System.out.println("로그인실패");
+		}
+		//로그인 성공하면 로그인성공 메시지와 로그인한 사용자의 정보를 출력
+		//로그인 실패하며 로그인실패 메시지를 출력
+		
+	}
+	
+}
