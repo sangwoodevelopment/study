@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="post" action="/serverweb/calc">
+		<input type="text" name="num1"/>
+		<select name="method">
+			<option value="+">+
+			<option value="-">-
+			<option value="*">*
+			<option value="/">/
+		</select>
+		<input type="text" name="num2"/>
+		<input type="submit" value="전송"/>
+	</form>
+</body>
+</html>
+
+
+package basic;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class CalcServlet
+ */
+
+@WebServlet(name = "calc", urlPatterns = { "/calc" })
+public class CalcServlet extends HttpServlet {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		int num1 = Integer.parseInt(request.getParameter("num1"));
+        int num2 = Integer.parseInt(request.getParameter("num2"));
+        String method = request.getParameter("method");
+        
+        int result = 0;
+        switch (method) {
+            case "+":
+                result = num1 + num2;
+                break;
+            case "-":
+                result = num1 - num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            case "/":
+            	 if (num2 != 0) {
+            		 result = num1/num2;
+            	 }else {
+            		 System.out.println("0으로 나눌 수 없습니다");
+            		 return;
+                 }
+                 break;
+             default:
+            	 System.out.println("잘못입력하였습니다. 다시 입력해주세요.");
+                 return;
+        	}
+		
+
+        out.print("<h1>계산결과</h1>");
+        out.print("</hr>");
+        out.print("<h2>" + "num1의"+" "+ +num1+ "과 " +"num2"+ " "+num2 + "를 연산 한 결과는" + result + "입니다.</h2>");
+        out.close();
+    }
+}
+
