@@ -1,0 +1,41 @@
+package basic;
+
+import java.io.IOException;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class LifeCycleTestServlet extends HttpServlet{
+	public LifeCycleTestServlet(){
+		System.out.println("LifeCycleTestsServlet서블릿생성");
+	}
+	public void init() throws ServletException {
+		System.out.println("init()");
+	}
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		System.out.println("service():"+req.getMethod());
+		if(req.getMethod().equals("GET")) {
+			doGet(req,res);
+		}else {
+			doPost(req,res);
+		}
+	}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		System.out.println("doGet()");
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		System.out.println("doPost()");
+	}
+	public void destroy() {
+		System.out.println("destroy()");
+	}
+	
+}
