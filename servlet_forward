@@ -1,0 +1,34 @@
+package basic;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import member.MemberDTO;
+
+/**
+ * Servlet implementation class ForwardTestServlet
+ */
+public class ForwardTestServlet extends HttpServlet {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text.html;charset=UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		
+		System.out.println("Forward연습 - ForwardTestServlet");
+		out.print("<h1>요청재지정연습 - Forward</h1>");
+		
+		MemberDTO dto = new MemberDTO("bts1", "1234", "슈가", "대구", "래퍼");
+		request.setAttribute("mydata", dto);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/serverweb/jspbasic/reslut.jsp");
+		rd.forward(request, response);
+	}
+
+}
