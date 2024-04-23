@@ -1,0 +1,36 @@
+package member.mvc;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import member.MemberDAO;
+import member.MemberDAOImpl;
+import member.MemberDTO;
+
+import java.io.IOException;
+
+/**
+ * Servlet implementation class LoginServlet
+ */
+//@WebServlet(name="login", urlPatterns= {"/member/mvc/login"})
+public class LoginServlet extends HttpServlet {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String id = request.getParameter("id");
+		String pass = request.getParameter("pass");
+		
+		MemberDAO dao = new MemberDAOImpl();
+		MemberDTO user =  dao.login(id, pass);
+		System.out.println(user);
+		
+		request.setAttribute("loginUser", user);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+		rd.forward(request, response);
+	}
+
+}
