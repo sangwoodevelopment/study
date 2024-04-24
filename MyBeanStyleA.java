@@ -1,7 +1,6 @@
-package app2;
+package app1;
 
-public class MyBeanStyleA implements MyBeanStyle{
-	@Override
+public class MyBeanStyleA {
 	public void testHello(String name) {
 		System.out.println("hello..."+name+"!!!");
 	}
