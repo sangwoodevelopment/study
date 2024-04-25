@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="dao" class="basic.MemberDAO"/>
+	<bean id="insa" class="basic.InsaImpl">
+		<!-- constructor-arg가 정의된 개수를 보면서 매개변수가 볓 개인지를 파악
+			constructor-arg가 하나면 매개변수 한 개인 생성자를 호출하고 
+			ref bean="dao"에 의해서 매개변수의 타입이 dao로 동록된 빈의 타입이라는 것을 판단한다
+		 -->
+		<constructor-arg >
+			<!-- bean의 id가 dao인 빈을 연결 -->
+			<ref bean="dao"/>
+		</constructor-arg>
+		<constructor-arg value="안녕"/>
+	</bean>
+	<bean id="dice" class="di.constructor.exam01.Dice"/>
+	<bean id="player" class="di.constructor.exam01.Player">
+		<constructor-arg>
+			<ref bean="dice"/>
+		</constructor-arg>
+	</bean>
+</beans>
