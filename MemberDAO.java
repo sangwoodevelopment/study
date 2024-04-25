@@ -1,5 +1,8 @@
 package basic;
 public class MemberDAO {
+	public MemberDAO() {
+		System.out.println("기본생성자 - MemberDAO");
+	}
 	public void add(MemberDTO user){
 		System.out.println("db에 insert하기");
 	}
