@@ -1,4 +1,4 @@
-package di.annotation.exam01;
+package di.constructor.exam01;
 
 public interface AbstractPlayer {
 
