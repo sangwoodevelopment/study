@@ -1,4 +1,4 @@
-package di.constructor.exam03;
+package di.setter.exam03;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

@@ -1,4 +1,4 @@
-package di.constructor.exam03;
+package di.setter.exam03;
 
 public class ArticleDTO {
 	private String name;

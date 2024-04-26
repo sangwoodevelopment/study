@@ -1,4 +1,4 @@
-package di.constructor.exam03;
+package di.setter.exam03;
 
 public class MysqlArticleDAO implements IArticleDAO {
 	@Override
