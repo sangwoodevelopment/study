@@ -1,22 +1,19 @@
-package basic;
+package di.constructor.exam03;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestMain {
 	public static void main(String[] args) {
-		//1. setter메소드를 이용해서 멤버변수를 셋팅하기
-//		MemberDAO dao = new MemberDAO();
-//		Insa insa = new InsaImpl();
-//		insa.setDao(dao);
 		
-		//2. 생성자를 이용해서 멤버변수를 셋팅
+		ArticleDTO dto = new ArticleDTO();
+		dto.setName("백엔드");
+		dto.setTitle("스프링");
+		dto.setContent("의존성 주입");
+		dto.setDate("2024-04-26");
+		
 		ApplicationContext factory = new ClassPathXmlApplicationContext("/config/constructor.xml");
-		Insa insa = (Insa)factory.getBean("insa");
-		
-		MemberDTO user = new MemberDTO("jang","1234","장동건");
-		insa.addUser(user);
-
+		IWriteArticleMgr mgr = factory.getBean("Manager",IWriteArticleMgr.class);
+		mgr.write(dto);
 	}
-
 }
