@@ -1,4 +1,4 @@
-package di.constructor.exam01;
+package di.setter.exam01;
 
 import java.util.Random;
 public class Dice extends Random implements diceinter{
