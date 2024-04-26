@@ -1,4 +1,4 @@
-package di.constructor.exam02;
+package di.setter.exam02;
 
 public class LogicImpl implements Logic {
 	@Override
