@@ -39,13 +39,19 @@ public class DeptDAOImpl implements DeptDAO{
 	@Override
 	public DeptDTO read(String deptno) {
 		// TODO Auto-generated method stub
-		return null;
+		return template.queryForObject("select * from dept where deptno=?", 
+				new Object[] {deptno}, new DeptRowMapper());
 	}
 
 	@Override
 	public int update(DeptDTO dept) {
 		// TODO Auto-generated method stub
-		return 0;
+		StringBuffer sql = new StringBuffer();
+		sql.append("update dept ");
+		sql.append("set mgr_id=?, deptaddr=?, depttel=? ");
+		sql.append("where deptno=?");
+		return template.update(sql.toString(), dept.getMgr_id(), dept.getDeptaddr(), 
+							dept.getDepttel(), dept.getDeptno());
 	}
 	
 }

@@ -1,3 +1,4 @@
+<%@page import="com.multi.erp.dept.DeptDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -14,7 +15,7 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-	
+	<% DeptDTO dept = (DeptDTO)request.getAttribute("dept"); %>
 			<div class="col-lg-10">
 				<form role="form" class="form-horizontal"
 				 action="/erp/dept/update.do" method="post">
@@ -26,7 +27,8 @@
 							<!-- 부서코드 -->
 							<label class="control-label col-sm-2" for="deptcode">부서코드</label>
 							<div class="col-sm-3">
-								
+								<%= dept.getDeptno() %>
+								<input type="hidden" name="deptno" value="<%= dept.getDeptno() %>">
 							</div>
 						</div>
 

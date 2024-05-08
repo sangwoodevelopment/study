@@ -44,7 +44,7 @@
 						<tbody>
 							<%for (DeptDTO dept:deptlist){ %>
 								<tr>
-									<td><a href=""><%=dept.getDeptno() %></a></td>
+									<td><a href="/erp/dept/read.do?deptno=<%=dept.getDeptno() %>&action=READ"><%=dept.getDeptno() %></a></td>
 									
 									
 									<td><%=dept.getDeptname() %></td>
@@ -54,6 +54,7 @@
 									<td><%=dept.getDeptuppercode() %></td>
 									<td><%=dept.getJob_category() %></td>
 									<td><%=dept.getMgr_id() %></td>
+									<td><%=dept.getDeptaddr() %></td>
 									<td><%=dept.getDepttel() %></td>
 									<td><a
 										href="/erp/dept/delete.do?deptno=<%=dept.getDeptno()%>">삭제</a></td>

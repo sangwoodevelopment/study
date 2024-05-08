@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -42,5 +43,32 @@ public class DeptController {
 		List<DeptDTO> deptlist =  service.select();
 		mav.addObject("deptlist", deptlist);
 		return mav;
+	}
+	@GetMapping("/read.do")
+	public ModelAndView read(String deptno, String action) {
+		System.out.println(deptno+":"+action);
+		ModelAndView mav = new ModelAndView("dept/read");
+		DeptDTO dept =  service.read(deptno);
+		String view="";
+		if(action.equals("READ")) {
+			view = "dept/read";
+		}else {
+			view = "dept/update";
+		}
+		mav.setViewName(view);
+		mav.addObject("dept",dept);
+		return mav;
+	}
+	@GetMapping("/delete.do")
+	public String delete(String deptno) {
+		int result = service.delete(deptno);
+		return "redirect:/dept/list";
+	}
+	//데이터수정하기
+	@PostMapping("/update.do")
+	public String update(DeptDTO dept) {
+		System.out.println(dept);
+		service.update(dept);
+		return "redirect:/dept/list";
 	}
 }

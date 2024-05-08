@@ -20,4 +20,5 @@ public class DeptDTO {
 	private String deptaddr;
 	private String depttel;
 	
+	
 }

@@ -13,4 +13,14 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/insa_menu.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/dept/deptlist.jsp"/>	
 	</definition>
+	
+	<definition name="dept/read" extends="mainTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/insa_menu.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/dept/dept_read.jsp"/>	
+	</definition>
+	
+	<definition name="dept/update" extends="mainTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/insa_menu.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/dept/dept_update.jsp"/>	
+	</definition>
 </tiles-definitions>

@@ -41,5 +41,11 @@ public class DeptServiceImpl implements DeptService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int update(DeptDTO dept) {
+		// TODO Auto-generated method stub
+		return dao.update(dept);
+	}
 	
 }
