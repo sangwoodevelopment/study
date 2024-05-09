@@ -1,13 +1,30 @@
-package basic;
-public class MemberDAO {
-	public MemberDAO() {
-		System.out.println("기본생성자 - MemberDAO");
-	}
-	public void add(MemberDTO user){
-		System.out.println("db에 insert하기");
-	}
-	public MemberDTO getUser(String id){
-		System.out.println("사용자정보 가져오기 - db에서 조회");
-		return null;
-	}
+package com.multi.erp.member;
+
+import java.util.List;
+
+public interface MemberDAO {
+	List<MemberDTO> getTreeEmpList(String deptno);
+	int insert(MemberDTO user);
+	List<MemberDTO> getMemberList();
+	int delete(String id);
+	MemberDTO read(String id);
+	List<MemberDTO> search(String column, String search,String pass);
+	int update(MemberDTO user);
+	MemberDTO login(MemberDTO loginUser);
+	boolean idCheck(String id);
+	MemberDTO findById(String id);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
