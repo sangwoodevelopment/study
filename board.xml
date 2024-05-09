@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.erp.board">
+	<select id="selectall" resultType="board" >
+		select * from tbboard
+	</select>
+	<!-- #{}으로 변수를 연결하면 PreparedStatement의 ?와 연결 -->
+	<insert id="insert" parameterType="board">
+		insert into tbboard
+		values(tbboard_seq.nextval,#{id},#{title},#{content},sysdate,#{category})
+	</insert>
+</mapper> 
