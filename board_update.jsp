@@ -34,7 +34,7 @@
 			<div class="form-panel">
 
 				<form class="form-horizontal style-form"
-				 action="/springmvc/board/update.do"  method="post">
+				 action="/erp/board/update"  method="post">
 					<div class="form-group">
 						<div class="col-md-2 text-right">
 							<label for="id" class="control-label">번호</label>

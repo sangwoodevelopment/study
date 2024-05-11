@@ -38,11 +38,11 @@ public class BoardDTO {
 		this.board_no = board_no;
 	}
 	public String getId() {
-		System.out.println("getId()");
+//		System.out.println("getId()");
 		return id;
 	}
 	public void setId(String id) {
-		System.out.println("setId()");
+//		System.out.println("setId()");
 		this.id = id;
 	}
 	public Date getWrite_date() {

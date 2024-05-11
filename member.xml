@@ -6,4 +6,8 @@
 	<select id="selectall" resultType="member" >
 		select * from member
 	</select>
+	<select id="login" resultType="member" parameterType="member">
+		select * from member
+		where id = #{id} and pass = #{pass}
+	</select>
 </mapper> 

@@ -34,37 +34,45 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardDTO getBoardInfo(String board_no) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.read(board_no);
 	}
 
 	@Override
 	public int update(BoardDTO board) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(board);
 	}
 
 	@Override
 	public int delete(String board_no) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(board_no);
 	}
 
 	@Override
 	public List<BoardDTO> search(String data) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.search(data);
 	}
 
 	@Override
 	public List<BoardDTO> search(String tag, String data) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.search(tag, data);
 	}
 
 	@Override
 	public List<BoardDTO> findByCategory(String category) {
 		// TODO Auto-generated method stub
-		return null;
+		List<BoardDTO> list = null;
+		if(category!=null) {
+			if(category.equals("all")) {
+				list=dao.boardList();
+			}else {
+				list = dao.findByCategory(category);
+			}
+		}
+		return list;
 	}
 
 }

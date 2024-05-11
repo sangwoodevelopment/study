@@ -1,6 +1,8 @@
 package com.multi.erp.board;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,41 +36,50 @@ public class BoardDAOImpl implements BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList("com.multi.erp.board.selectall");
 	}
+	
+	@Override
+	public List<BoardDTO> findByCategory(String category) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList("com.multi.erp.board.categorySelect", category);
+	}
 
 	@Override
 	public BoardDTO read(String board_no) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSessionTemplate.selectOne("com.multi.erp.board.read",board_no);
 	}
 
 	@Override
 	public int update(BoardDTO board) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.update("com.multi.erp.board.update",board);
 	}
 
 	@Override
 	public int delete(String board_no) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.delete("com.multi.erp.board.delete",board_no);
 	}
 
 	@Override
 	public List<BoardDTO> search(String data) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSessionTemplate.selectList("com.multi.erp.board.search", data);
 	}
-
+	//동적sql처리
+	//dto에 담기지 않는 매개변수 2개를 MyBatis로 넘기기
 	@Override
 	public List<BoardDTO> search(String tag, String data) {
 		// TODO Auto-generated method stub
-		return null;
+		List<BoardDTO> list = null;
+		System.out.println(tag+"============="+data);
+		Map<String, String> map = new HashMap<>();
+		map.put("tag", tag);
+		map.put("data", data);
+		list = sqlSessionTemplate.selectList("com.multi.erp.board.dynamicSearch", map);
+		return list;
 	}
 
-	@Override
-	public List<BoardDTO> findByCategory(String category) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

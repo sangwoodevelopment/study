@@ -12,4 +12,14 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/board_menu.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/board/board_write.jsp"/>
 	</definition>
+	
+	<definition name="board/read" extends="mainTemplate">	
+		<put-attribute name="menu" value="/WEB-INF/menu/board_menu.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/board/board_read.jsp"/>
+	</definition>
+	
+	<definition name="board/update" extends="mainTemplate">	
+		<put-attribute name="menu" value="/WEB-INF/menu/board_menu.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/board/board_update.jsp"/>
+	</definition>
 </tiles-definitions>

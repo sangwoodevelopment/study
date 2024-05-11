@@ -6,9 +6,52 @@
 	<select id="selectall" resultType="board" >
 		select * from tbboard
 	</select>
+	<select id="categorySelect" parameterType="String" resultType="board">
+		select * from tbboard where category=#{category}
+	</select>
 	<!-- #{}으로 변수를 연결하면 PreparedStatement의 ?와 연결 -->
 	<insert id="insert" parameterType="board">
 		insert into tbboard
 		values(tbboard_seq.nextval,#{id},#{title},#{content},sysdate,#{category})
 	</insert>
+	
+	<select id="search" parameterType="String" resultType="board">
+		select * from tbboard where title like '%' || #{title} || '%'
+	</select>
+	
+	<select id="read" parameterType="String" resultType="board">
+		select * from tbboard where board_no = #{board_no}
+	</select>
+	
+	<delete id="delete" parameterType="String">
+		delete from tbboard where board_no = #{board_no}
+	</delete>
+	
+	<update id="update" parameterType="board">
+		update tbboard set category=#{category}, title=#{title}, content=#{content}
+		where board_no = #{board_no}
+	</update>
+	<!-- where절을 태그로 표현할 수 있다. 조건이 있는 경우는 where을 생성하고 
+									조건이 없는 경우 where태그가 추가되지 않도록 처리 -->
+	<select id="dynamicSearch" resultType="board" parameterType="Map">
+		select * from tbboard
+		<where>
+			<if test="tag='title' and data!=''">
+				title like '%' || #{data} || '%'
+			</if>
+			<if test="tag=='id' and data!=''">
+				id like '%' || #{data} || '%'
+			</if>
+			<if test="tag=='content' and data!=''">
+				content like '%' || #{data} || '%'
+			</if>
+			<if test="tag=='write_date' and data!=''">
+				<!-- trunc(write_date) &lt;= #{data} -->
+				<![CDATA[
+					
+				]]>
+				trunc()
+			</if>
+		</where>
+	</select>
 </mapper> 
