@@ -1,0 +1,18 @@
+{
+	"historylist": [
+		{
+			"month": "3",
+			"subject": "java"
+		},
+		{
+			"month": "3",
+			"subject": "servlet"
+		}
+	],
+	"name": "김서연",
+	"addr": {
+		"zip": "111-222",
+		"addr1": "인천시"
+	},
+	"age": "25"
+}
