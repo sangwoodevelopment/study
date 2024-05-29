@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>1. 공유된 객체 출력</h2>
+	<div>
+		<h2>아이디:<span th:text="${person.id}"></span></h2>
+		<h2>패스워드:<span th:text="${person.pass}"></span></h2>
+		<h2>성명:<span th:text="${person.name}"></span></h2>
+		<h2>점수:<span th:text="${person.jumsu}"></span></h2>
+	</div>
+	<h2>2. 공유된 객체 List에서 DTO를 꺼내서 출력(테이블로)</h2>
+	<table border="1">
+		<tr>
+			<th>아이디</th>
+			<th>패스워드</th>
+			<th>성명</th>
+			<th>점수</th>
+		</tr>
+		<tr th:each="person:${list}">
+			<td th:text="${person.id}"></td>
+			<td th:text="${person.pass}"></td>
+			<td th:text="${person.name}"></td>
+			<td th:text="${person.jumsu}"></td>
+		</tr>
+	</table>
+	
+	<h2>3. 조건에 만족하는 값 출력하기</h2>
+	<!-- 공유된 list값을 출력
+		 아이디,패스워드,성명,점수,합격여부
+		 합격여부 => 점수가 90점 이상이면 합격, 미만이면 불합격 출력
+	 -->
+	 	<table border="1">
+		<tr>
+			<th>아이디</th>
+			<th>패스워드</th>
+			<th>성명</th>
+			<th>점수</th>
+			<th>합격여부</th>
+		</tr>
+		<tr th:each="person:${list}">
+			<td th:text="${person.id}"></td>
+			<td th:text="${person.pass}"></td>
+			<td th:text="${person.name}"></td>
+			<td th:text="${person.jumsu}"></td>
+			<td>
+				<span th:text="합격" th:if="${person.jumsu>=90}"></span>
+				<span th:text="불합격" th:unless="${person.jumsu>=90}"></span>
+			</td>
+		</tr>
+	</table>
+	
+	<h2>4. 하이퍼링크로 요청하기(get방식으로 데이터보내기)</h2>
+	<!-- 파라미터를 하이퍼링크로 요청하면서 보내기 
+		th:href="@{(요청path 파라미터명=값, 파라미터명=값...)}"
+	-->
+	<h3><a th:href="@{/th/linktest(data1=${person.name})}">하이퍼링크로 요청하기</a></h3>
+	<!-- /th/linktest를 요청하며 id는 person의 id, data1은 person의 jumsu -->
+	<h3><a th:href="@{/th/linktest(data1=${person.jumsu},id=${person.id})}">하이퍼링크로 요청하기</a></h3>
+</body>
+</html>

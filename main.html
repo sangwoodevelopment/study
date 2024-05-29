@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>프레그먼트 연결하기</h1>
+	<div style="background-color: yellow; heigth: 100px">
+		메인의 영역 #########################  ---------1
+	</div>
+	
+	<div id="top" th:insert="~{fragment/fragment1 :: content1}">
+	
+	</div>
+	<div style="background-color: yellow; heigth: 100px">
+		메인의 영역 #########################  ---------2
+	</div>
+	<div style="background-color: yellow; heigth: 100px">
+		메인의 영역 #########################  ---------3
+	</div>
+	<div id="menu1" th:replace="~{fragment/fragment1 :: content1}">
+	
+	</div>
+	<div id="menu2" th:replace="fragment/fragment1 :: content2">
+	
+	</div>
+	<div style="background-color: yellow; heigth: 100px">
+		메인의 영역 #########################  ---------4
+	</div>
+	<div id="body" th:replace="~{fragment/fragment2 :: content3('bts','방탄소년단')}">
+	
+	</div>
+</body>
+</html>

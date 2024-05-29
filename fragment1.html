@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>JSP에서 include됐던 페이지가 타임리프는 fragment라 부른다</h1>
+	<!-- th:fagement에 프레그먼트의 이름 -->
+	<div style="background-color:red;" th:fragment="content1">
+		삽입될 프레그먼트 --------- 1
+	</div>
+	<div style="background-color:blue;" th:fragment="content2">
+		삽입될 프레그먼트 --------- 2
+	</div>
+</body>
+</html>

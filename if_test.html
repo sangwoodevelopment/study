@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>조건판단</h1>
+	<h2>1. if~else</h2>
+	<hr/>
+	<h2>공유된 데이터:<span th:text="${myval}"></span></h2>
+	<!-- 조건을 만족하지 않으면 출력되지 않는다 -->
+	<!-- th:if는 조건을 만족한다면  -->
+	<h2>출력결과1:<span th:text="성공" th:if="${myval>=100}"></span></h2>
+	<!-- th:unless는 조건이 만족하지 않는다면 즉, th:if -->
+	<h2>출력결과1:<span th:text="실패" th:unless="${myval>=100}"></span></h2>
+	<br/>
+	<h2>2. switch</h2>
+	<div th:switch="${age}">
+		<span th:case="10">10대</span>
+		<span th:case="20">20대</span>
+		<span th:case="30">30대</span>
+		<span th:case="40">40대</span>
+		<span th:case="50">50대</span>
+		<span th:case="*">기타</span>
+	</div>
+</body>
+</html> 
