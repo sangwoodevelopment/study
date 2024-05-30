@@ -1,11 +1,14 @@
-package com.multi.erp.board;
+package com.example.bootErp.board;
 
 
 import java.util.List;
+
+import com.example.bootErp.dto.BoardDTO;
+import com.example.bootErp.dto.BoardFileDTO;
 //dao의 메소드를 호출
 public interface BoardService {
 	//게시글등록  - tbboard테이블과 board_file테이블에 저장
-//	int insert(BoardDTO board,List<BoardFileDTO> boardfiledtolist);
+	int insert(BoardDTO board,List<BoardFileDTO> boardfiledtolist);
 	int insert(BoardDTO board);
 	//게시글목록보기
 	List<BoardDTO> boardList();
@@ -23,6 +26,6 @@ public interface BoardService {
 	List<BoardDTO> findByCategory(String category);
 	
 	//게시글을 상세보기한 경우 보여질 업로드한 파일의 목록 조회
-//	List<BoardFileDTO> getFileList(String boardno);
-//	BoardFileDTO getFile(BoardFileDTO inputdata);
+	List<BoardFileDTO> getFileList(String boardno);
+	BoardFileDTO getFile(String boardFileno);
 }

@@ -3,40 +3,59 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multi.erp.board">
-	<select id="selectall" resultType="board" >
+	<select id="selectall" resultType="board">
 		select * from tbboard
 	</select>
 	<select id="categorySelect" parameterType="String" resultType="board">
 		select * from tbboard where category=#{category}
 	</select>
+	<!--======게시글에 글 등록하기========  -->
 	<!-- #{}으로 변수를 연결하면 PreparedStatement의 ?와 연결 -->
 	<insert id="insert" parameterType="board">
-		insert into tbboard
+		insert into tbboard 
 		values(tbboard_seq.nextval,#{id},#{title},#{content},sysdate,#{category})
 	</insert>
+
+	<!-- 게시글에 첨부되는 파일을 정보를 등록 -->
+	<insert id="fileinsert" parameterType="java.util.List">
+		insert all	
+		<foreach collection="list" item="file" separator=" ">
+			into board_file values(#{file.board_file_no},tbboard_seq.currval,
+				#{file.originalFilename},#{file.storeFilename})
+		</foreach>
+		select * from dual
+	</insert> 
 	
-	<select id="search" parameterType="String" resultType="board">
+	<!--======================================  -->
+	<!-- 게시글에 첨부한  첨부파일 목록 가져오기 -->
+	<select id="fileselect" parameterType="String" resultType="boardfile">
+		select * from board_file where board_no=#{boardno}
+	</select>
+	<select id="getfileinfo" parameterType="String" resultType="boardfile">
+		select * from board_file where board_file_no=#{boardFileno}
+	</select>
+	
+	
+	<select id="search" parameterType="String" resultType="board" >
 		select * from tbboard where title like '%' || #{title} || '%'
 	</select>
-	
-	<select id="read" parameterType="String" resultType="board">
+	<select id="read" parameterType="String" resultType="board" >
 		select * from tbboard where board_no = #{board_no}
 	</select>
-	
 	<delete id="delete" parameterType="String">
 		delete from tbboard where board_no = #{board_no}
 	</delete>
-	
 	<update id="update" parameterType="board">
-		update tbboard set category=#{category}, title=#{title}, content=#{content}
+		update tbboard
+		set title=#{title},content=#{content},category=#{category}
 		where board_no = #{board_no}
 	</update>
-	<!-- where절을 태그로 표현할 수 있다. 조건이 있는 경우는 where을 생성하고 
-									조건이 없는 경우 where태그가 추가되지 않도록 처리 -->
+	<!-- where절을 태그로 표현할 수 있다.조건이 있는 경우는 where을 생성하고  
+				조건이 없는 경우는 where절이 추가되지 않도록 처리 -->
 	<select id="dynamicSearch" resultType="board" parameterType="Map">
 		select * from tbboard
 		<where>
-			<if test="tag='title' and data!=''">
+			<if test="tag=='title' and data!=''">
 				title like '%' || #{data} || '%'
 			</if>
 			<if test="tag=='id' and data!=''">
@@ -48,10 +67,22 @@
 			<if test="tag=='write_date' and data!=''">
 				<!-- trunc(write_date) &lt;= #{data} -->
 				<![CDATA[
-					
+					trunc(write_date) <= #{data}
 				]]>
-				trunc()
 			</if>
 		</where>
 	</select>
-</mapper> 
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -80,6 +80,15 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">내용</label>
+							<div class="col-sm-8">
+								<input type="date" id="write"
+									style="width: 100%; border: 1; overflow: visible; text-overflow: ellipsis;"
+									rows=15 name="content" value="${board.write_date }">
+
+							</div>
+						</div>
+						<div class="form-group">
 							<div class="col-lg-4 text-center"></div>
 							<div class="col-lg-2 text-center">
 								<button type="submit" class="btn btn-success"

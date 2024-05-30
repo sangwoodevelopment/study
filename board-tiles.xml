@@ -3,7 +3,7 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
        
-<tiles-definitions>	
+<tiles-definitions>
 	<definition name="board/list" extends="mainTemplate">	
 		<put-attribute name="menu" value="/WEB-INF/menu/board_menu.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/board/boardlist.jsp"/>
@@ -12,12 +12,10 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/board_menu.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/board/board_write.jsp"/>
 	</definition>
-	
 	<definition name="board/read" extends="mainTemplate">	
 		<put-attribute name="menu" value="/WEB-INF/menu/board_menu.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/board/board_read.jsp"/>
 	</definition>
-	
 	<definition name="board/update" extends="mainTemplate">	
 		<put-attribute name="menu" value="/WEB-INF/menu/board_menu.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/board/board_update.jsp"/>

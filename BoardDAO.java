@@ -1,9 +1,12 @@
-package com.multi.erp.board;
+package com.example.bootErp.board;
 
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
+
+import com.example.bootErp.dto.BoardDTO;
+import com.example.bootErp.dto.BoardFileDTO;
 //mybatis의 SqlSession을 이용해서 작업
 public interface BoardDAO {
 	//게시글등록 - db에 처리
@@ -23,13 +26,14 @@ public interface BoardDAO {
 	//category별로 검색
 	List<BoardDTO> findByCategory(String category);
 	
-	//=================첨부파일을 조회하기 위한 기능=========================
+	//=================첨부파일을 관리하기 위한 기능=========================
 	
 	//첨부파일을 저장하기 위한 메소드	
-//	int insertFile(List<BoardFileDTO> boardfiledtolist);
+	int insertFile(List<BoardFileDTO> boardfiledtolist);
 //	//게시글을 상세보기한 경우 보여질 업로드한 파일의 목록 조회
-//	List<BoardFileDTO> getFileList(String boardno);
-//	BoardFileDTO getFile(BoardFileDTO inputdata);
+	List<BoardFileDTO> getFileList(String boardno);
+	//파일정보를 리턴
+	BoardFileDTO getFile(String boardFileno);
 }
 
 
