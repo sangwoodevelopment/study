@@ -1,4 +1,4 @@
-package com.multi.erp.dept;
+package com.example.erp.dept;
 
 import java.util.List;
 

@@ -1,12 +1,12 @@
-package com.example.bootErp.board;
+package com.example.erp.board;
 
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.bootErp.dto.BoardDTO;
-import com.example.bootErp.dto.BoardFileDTO;
+import com.example.erp.dto.BoardDTO;
+import com.example.erp.dto.BoardFileDTO;
 //mybatis의 SqlSession을 이용해서 작업
 public interface BoardDAO {
 	//게시글등록 - db에 처리

@@ -1,10 +1,10 @@
-package com.example.bootErp.board;
+package com.example.erp.board;
 
 
 import java.util.List;
 
-import com.example.bootErp.dto.BoardDTO;
-import com.example.bootErp.dto.BoardFileDTO;
+import com.example.erp.dto.BoardDTO;
+import com.example.erp.dto.BoardFileDTO;
 //dao의 메소드를 호출
 public interface BoardService {
 	//게시글등록  - tbboard테이블과 board_file테이블에 저장

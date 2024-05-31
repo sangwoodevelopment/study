@@ -1,4 +1,4 @@
-package com.example.bootErp.board;
+package com.example.erp.board;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,8 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.bootErp.dto.BoardDTO;
-import com.example.bootErp.dto.BoardFileDTO;
+import com.example.erp.dto.BoardDTO;
+import com.example.erp.dto.BoardFileDTO;
 @Repository
 public class BoardDAOImpl implements BoardDAO {
 	//MyBatis의 핵심클래스로 이 클래스가 지원하는 기능을 이용해서 sql을 실행

@@ -1,10 +1,10 @@
-package com.multi.erp.dept;
+package com.example.erp.dept;
 
 import java.util.List;
 
 public interface DeptService {
 	int insert(DeptDTO dept);
-	List<DeptDTO> getDeptName();
+//	List<DeptDTO> getDeptName();
 	//전체사원목을 조회하는 메소드
 	public List<DeptDTO> select();
 	public int delete(String deptno);

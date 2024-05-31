@@ -1,4 +1,4 @@
-package com.multi.erp.dept;
+package com.example.erp.dept;
 
 import java.util.List;
 
@@ -14,14 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/dept")
 public class DeptController {
 	private DeptService service;
-
 	@Autowired
 	public DeptController(DeptService service) {
 		super();
 		this.service = service;
 	}
-
-	// 부서등록페이지가 보여지도록 실행
+	//부서등록페이지가 보여지도록 실행
 	@GetMapping("/insert")
 	public String showInsertPage() {
 		return "dept/register";
@@ -32,8 +30,8 @@ public class DeptController {
 		System.out.println(dept);
 		service.insert(dept);
 		//기본값이 forward이나 redirect를 하고 싶은 경우 redirect:을 추가하고 뒤에 path를 정의
-		//뷰만 forward하면 컨트롤러에서 공유한 데이터가 있는 경우 오류가 발생할 수 있다
-		//실행중인 컨트롤러에서 공유한 데이터를 출력하는 뷰가 아닌 이상은 redirect로 재요청
+		//뷰만 forward하면 컨트롤러에서 공유한 데이터가 있는 경우 오류가 발생할 수 있다.
+		//실행중인 컨트롤러에서 공유한 데이터를 출력하는 뷰가 아닌 이상은 redirect로 재 요청을 해야 한다.
 		return "redirect:/index.do";
 	}
 	//전체 부서 정보를 조회
@@ -44,10 +42,12 @@ public class DeptController {
 		mav.addObject("deptlist", deptlist);
 		return mav;
 	}
+	//클릭한 부서의 정보를 조회 
+	//=> action에 따라 read작업인 update작업인지 구분
 	@GetMapping("/read.do")
-	public ModelAndView read(String deptno, String action) {
+	public ModelAndView read( String deptno,String action) {
 		System.out.println(deptno+":"+action);
-		ModelAndView mav = new ModelAndView("dept/read");
+		ModelAndView mav = new ModelAndView();
 		DeptDTO dept =  service.read(deptno);
 		String view="";
 		if(action.equals("READ")) {
@@ -56,9 +56,10 @@ public class DeptController {
 			view = "dept/update";
 		}
 		mav.setViewName(view);
-		mav.addObject("dept",dept);
+		mav.addObject("dept", dept);
 		return mav;
 	}
+	//클릭한 부서를 삭제
 	@GetMapping("/delete.do")
 	public String delete(String deptno) {
 		int result = service.delete(deptno);
@@ -72,3 +73,12 @@ public class DeptController {
 		return "redirect:/dept/list";
 	}
 }
+
+
+
+
+
+
+
+
+

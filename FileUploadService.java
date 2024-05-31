@@ -1,4 +1,4 @@
-package com.example.bootErp.board;
+package com.example.erp.board;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.bootErp.dto.BoardFileDTO;
+import com.example.erp.dto.BoardFileDTO;
 
 @Service
 public class FileUploadService {

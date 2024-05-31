@@ -10,9 +10,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" th:inline="javascript">
+
+	//타임리프에서 사용하는 변수를 자바스크립트에서 사용하는 경우
 	//jQuery를 이용해서 select에서 선택을 하면 컨트롤러가 요청되도록 처리
-	let category = "${category}";//컨트롤러를 요청하고 response될때 공유해준 값을 가져와서 셋팅(EL로)
+	let category = /*[[${category}]]*/ ;//컨트롤러를 요청하고 response될때 공유해준 값을 타임리프를 실행해서 받아오기
+	alert(category);
 	$(document).ready(function(){
 		//alert("컨트롤러가 공유한 데이터=>"+category);
 		//console.log("컨트롤러가 공유한 데이터=>"+category);
@@ -55,7 +58,8 @@
 				<tr th:each="board:${boardlist }">
 				
 					<td th:text="${board.board_no }"></td>
-						<td><a href="/erp/board/read?board_no=${board.board_no }&action=READ"><span th:text="${board.title }"></span></a></td>
+						<td><a th:href="@{/board/read(board_no=${board.board_no },action=READ)}">
+							<span th:text="${board.title }"></span></a></td>
 						<td><span th:text="${board.id }"></span></td>
 						<td><span th:text="${board.write_date }"></span></td>
 						<td>

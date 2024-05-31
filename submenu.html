@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<div class="list-group"  th:fragment="menu">
+		<div class="list-group" th:if="${session.user==null}">
+			<a href="#" class="list-group-item">News</a> 
+			<a href="#"	class="list-group-item">회사연역</a> 
+			<a href="#" class="list-group-item">Vision</a>
+			<a href="#" class="list-group-item">사업분야</a>
+			<a href="#"	class="list-group-item">오시는길</a>
+			<a href="#"	class="list-group-item">우리회사쇼핑몰</a>
+		</div>
+		<div  th:if="${session.user!=null and session.user.menupath=='menu/insa' and job==null}">
+			<a href="/erp/dept/insert" class="list-group-item">부서등록</a> 
+			<a href="/erp/member/insert"	class="list-group-item">인사등록</a> 
+			<a href="/erp/dept/list" class="list-group-item">부서조회</a>
+			<a href="/erp/dept/tree.do" class="list-group-item">조직도</a>
+			<a href="#" class="list-group-item">부서별 인사 조회</a>
+			<a href="#"	class="list-group-item">인사평가</a>	
+			<a href="#" class="list-group-item">인사점수조회하기</a>
+		</div>
+		<div class="list-group" th:if="${session.user!=null and session.user.menupath=='menu/it' and job==null}">
+			<a href="#" class="list-group-item">분석설계자료</a> 
+			<a href="#"	class="list-group-item">디자인확인</a> 
+			<a href="#" class="list-group-item">front-end</a>
+			<a href="#" class="list-group-item">back-end</a>
+			<a href="#"	class="list-group-item">프로젝트진행상황</a>	
+			<a href="#" class="list-group-item">개발이슈조회</a>
+			<a href="/erp/json/showpage" class="list-group-item">JSON테스트</a>
+			<a href="/erp/ajax/showpage" class="list-group-item">Ajax테스트</a>
+			<a href="/erp/ajax/exam" class="list-group-item">Ajax연습하기</a>
+		</div>
+		<div class="list-group" th:if="${session.user!=null and session.user.menupath=='menu/jaemu' and job==null}">
+			<a href="#" class="list-group-item">예산확인</a> 
+			<a href="#"	class="list-group-item">경비청구내역확인</a> 
+			<a href="#" class="list-group-item">부서별 청구내역</a>
+			<a href="#" class="list-group-item">지출내역확인</a>
+			<a href="#"	class="list-group-item">업무협조</a>
+		</div>
+		
+		<div class="list-group"  th:if="${session.user!=null and session.user.menupath=='menu/manage' and job==null}">
+			<a href="#" class="list-group-item">구매관리</a> 
+			<a href="#"	class="list-group-item">자산등록 및 관리</a> 		
+			<a href="#" class="list-group-item">사내행사관리</a>
+			<a href="#" class="list-group-item">사내어린이집 관리</a>
+			<a href="#"	class="list-group-item">통근버스관리</a>	
+			<a href="#" class="list-group-item">회의실예약</a>
+		</div>
+	
+		
+		<div class="list-group"  th:if="${session.user!=null and session.user.menupath=='menu/sales' and job==null	}">
+			<a href="#" class="list-group-item">매장확인</a> 
+			<a href="#"	class="list-group-item">영업실적확인</a> 
+			<a href="#" class="list-group-item">거래처확인</a>
+			<a href="#" class="list-group-item">기업영업확인</a>
+			<a href="#"	class="list-group-item">견적서</a>	
+		</div>
+			<div class="list-group" th:if="${session.user!=null and boardmenu=='menu/board'}"> 
+			<a href="#"	class="list-group-item">사장님말씀</a> 
+			<a href="#" class="list-group-item">경조사</a>
+			<a href="#" class="list-group-item">사내소식</a>
+			<a href="#"	class="list-group-item">회사일정</a>
+			<a href="#"	class="list-group-item">게시판</a>
+		</div>
+	</div>
+	
+	
+	
+	
+</html>

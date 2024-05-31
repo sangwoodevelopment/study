@@ -1,4 +1,4 @@
-package com.multi.erp.dept;
+package com.example.erp.dept;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +18,6 @@ public class DeptDTO {
 	private String job_category;
 	private String mgr_id;
 	private String deptaddr;
-	private String depttel;
-	
+	private String depttel;	
 	
 }

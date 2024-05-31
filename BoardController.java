@@ -1,4 +1,4 @@
-package com.example.bootErp.board;
+package com.example.erp.board;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,18 +11,14 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
-import com.example.bootErp.dto.BoardDTO;
-import com.example.bootErp.dto.BoardFileDTO;
+import com.example.erp.dto.BoardDTO;
+import com.example.erp.dto.BoardFileDTO;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -38,7 +34,7 @@ public class BoardController {
 		this.fileuploadService = fileuploadService;
 	}
 	@GetMapping("/list")
-	public ModelAndView list(String category) {
+	public ModelAndView list(@RequestParam("category") String category) {
 		System.out.println(category+"===========");
 		ModelAndView mav = new ModelAndView("board/boardlist");
 		System.out.println("컨트롤러");
@@ -81,7 +77,7 @@ public class BoardController {
 	//동적쿼리를 테스트
 	//사용자가 select에서 어떤 option을 선택하냐에 따라 다른 쿼리가 실행되어야 한다.
 	@PostMapping("/search")
-	public ModelAndView search(String tag,String search) {
+	public ModelAndView search(@RequestParam("tag") String tag,@RequestParam("search") String search) {
 		ModelAndView mav = new ModelAndView("board/boardlist");
 		System.out.println("컨트롤러");
 		//서비스메소드를 호출
@@ -93,13 +89,13 @@ public class BoardController {
 	}
 	//Model타입의 변수를 매개변수에 정의하면 스프링MVC내부에서 데이터를 담을 수 있는 모델객체를 만들어서 넘겨준다.
 	@GetMapping("/read")
-	public String read(String board_no,String action,Model model) {
+	public String read(@RequestParam("board_no") String board_no,@RequestParam("action") String action,Model model) {
 		BoardDTO board =  service.getBoardInfo(board_no);
 		List<BoardFileDTO> boardfiledtolist = service.getFileList(board_no);
 		System.out.println("**************************"+board);
 		String view="";
 		if(action.equals("READ")) {
-			view = "board/read";
+			view = "board/board_read";
 		}else {
 			view = "board/update";
 		}

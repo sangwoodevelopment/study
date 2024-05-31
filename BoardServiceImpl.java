@@ -1,4 +1,4 @@
-package com.example.bootErp.board;
+package com.example.erp.board;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.bootErp.dto.BoardDTO;
-import com.example.bootErp.dto.BoardFileDTO;
+import com.example.erp.dto.BoardDTO;
+import com.example.erp.dto.BoardFileDTO;
 //BoardDAO의 메소드 호출
 //컨트롤러에서 받은 데이터를 가공해서 DAO로 넘기거나 DAO에서 받은 데이터를 가공해서 컨트롤러로 넘기는 작업
 //비지니스로직
