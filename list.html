@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>Score(Mongo)</h1>
+	
+	<hr/>
+	<table align="center" border="1" width="600">
+		<tr bgcolor="skyblue">
+			<th>아이디</th><th>자바</th><th>성명</th>
+			<th>주소</th><th>부서번호</th>
+			<th>삭제</th>
+		</tr>
+
+			<tr th:each="mongo:${mongolist}">
+				<td><a
+			href="#" th:text="${mongo.id}"></a></td>
+				<td th:text="${mongo.name}"></td>
+				<td th:text="${mongo.dept}"></td>
+				<td th:text="${mongo.addr}"></td>
+				<td th:text="${mongo.java}"></td>
+				<td>
+			<a href="mybatisDel.do?id=<%=user.getId() %>">삭제</a></td>
+			</tr>
+			
+
+		<tr>
+			<td colspan="6">
+			<a href="/mongo/score/paginglist?pageNo=0">1</a>
+			<a href="/mongo/score/paginglist?pageNo=1">2</a>
+			<a href="/mongo/score/paginglist?pageNo=2">3</a>
+			<a href="/mongo/score/paginglist?pageNo=3">4</a>
+			<a href="/mongo/score/paginglist?pageNo=4">5</a>
+			</td>
+		</tr>
+	</table>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
